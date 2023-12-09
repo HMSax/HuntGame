@@ -20,7 +20,6 @@ public class HuntGame extends JFrame {
         setResizable(false);
 
         gamePanel = new JPanel(new GridLayout(10, 10));
-        gameBoard = new GameBoard();
         add(gamePanel,BorderLayout.CENTER);
         initGame();
     }
@@ -29,11 +28,12 @@ public class HuntGame extends JFrame {
 
         String playAgain;
         do {                                                    //Sätter upp spelet
+            gameBoard = new GameBoard();
             gameBoard.setMarkerX(4, 0, Hunter.hunterMark);
             gameBoard.setTargetIT(4, 9, Target.targetMark);
             BufferedReader controller = new BufferedReader(new InputStreamReader(System.in));
             GameMessage.welcome();
-            TimeUnit.SECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(2);
             boolean keepPlaying = true;
             while (keepPlaying) {
                 paintGrid();
@@ -65,6 +65,7 @@ public class HuntGame extends JFrame {
                     keepPlaying = false;
                 }
             }
+            paintGrid();
             GameMessage.playAgain();
             playAgain = controller.readLine().toLowerCase().trim();
         } while (playAgain.equals("yes"));
