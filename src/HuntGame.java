@@ -21,7 +21,6 @@ public class HuntGame extends JFrame {
 
         gamePanel = new JPanel(new GridLayout(10, 10));
         gameBoard = new GameBoard();
-        createGrid();
         add(gamePanel,BorderLayout.CENTER);
         initGame();
     }
@@ -37,6 +36,7 @@ public class HuntGame extends JFrame {
             TimeUnit.SECONDS.sleep(3);
             boolean keepPlaying = true;
             while (keepPlaying) {
+                paintGrid();
                 GameMessage.howTo();
                 System.out.println(gameBoard);
                 String aSDW = controller.readLine().toLowerCase().trim();
@@ -72,7 +72,7 @@ public class HuntGame extends JFrame {
 
     }
 
-    private void createGrid() {
+    private void paintGrid() {
         gamePanel.removeAll();
         String[][] board = gameBoard.getGameBoard();
         String onIndex;

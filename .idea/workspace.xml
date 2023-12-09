@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1fdfd6b8-851e-4acf-b112-4a7dca92f5be" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HuntGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HuntGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1702072720029</updated>
-      <workItem from="1702072721100" duration="17618000" />
+      <workItem from="1702072721100" duration="19500000" />
     </task>
     <task id="LOCAL−00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -92,7 +91,14 @@
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1702089752923</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL−00004" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1702090952829</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1702090952829</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
