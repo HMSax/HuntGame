@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fdfd6b8-851e-4acf-b112-4a7dca92f5be" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1fdfd6b8-851e-4acf-b112-4a7dca92f5be" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +74,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1702072720029</updated>
-      <workItem from="1702072721100" duration="20947000" />
+      <workItem from="1702072721100" duration="21196000" />
     </task>
     <task id="LOCAL−00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -114,7 +111,14 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1702121240307</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL−00006" summary="initial commit with gui and readme">
+      <option name="closed" value="true" />
+      <created>1702122944131</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1702122944131</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +127,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="initial commit with gui" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial commit with gui" />
+    <MESSAGE value="initial commit with gui and readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit with gui and readme" />
   </component>
 </project>
