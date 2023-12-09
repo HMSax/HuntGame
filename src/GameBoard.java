@@ -9,7 +9,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class GameBoard extends JPanel implements ActionListener {
+public class GameBoard {
     private final String[][] gameBoardInit = {                                                             //Spelplanen
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
@@ -153,9 +153,5 @@ public class GameBoard extends JPanel implements ActionListener {
         return outString;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 
 }

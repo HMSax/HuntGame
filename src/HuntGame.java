@@ -7,15 +7,10 @@ import java.util.concurrent.TimeUnit;
 
 public class HuntGame extends JFrame {
     private JPanel gamePanel;
-    private JButton[][] buttonBoard;
+    private GameBoard gameBoard;
+    //private JButton[][] buttonBoard;
 
     public HuntGame() throws IOException, InterruptedException {
-
-        initUI();
-
-    }
-
-    private void initUI() throws IOException, InterruptedException {
         setTitle("HuntGame");
         setSize(500, 500);
         setLocationRelativeTo(null);
@@ -25,10 +20,13 @@ public class HuntGame extends JFrame {
         setResizable(false);
 
         gamePanel = new JPanel(new GridLayout(10, 10));
-        GameBoard gameBoard = new GameBoard();
-        buttonBoard = new JButton[10][10];
+        gameBoard = new GameBoard();
         createGrid(gameBoard.getGameBoard());
         add(gamePanel,BorderLayout.CENTER);
+        initGame();
+    }
+
+    private void initGame() throws InterruptedException, IOException {
 
         String playAgain;
         do {                                                    //Sätter upp spelet
@@ -74,34 +72,33 @@ public class HuntGame extends JFrame {
 
     }
 
-    private void createGrid(String[][] gameBoard) {
+    private void createGrid(String[][] board) {
         gamePanel.removeAll();
 
-        for(int i = 0; i < gameBoard.length; i++) {
-            for(int j = 0; j < gameBoard[i].length; j++) {
-                buttonBoard[i][j] = new JButton(gameBoard[i][j]);
-                buttonBoard[i][j].setOpaque(true);
-                buttonBoard[i][j].setBorderPainted(true);
-                buttonBoard[i][j].setFocusPainted(false);
-                buttonBoard[i][j].setContentAreaFilled(true);
-                buttonBoard[i][j].setBackground(Color.WHITE);
-                this.add(buttonBoard[i][j]);
+        for(int i = 0; i < board.length; i++) {
+            for(int j = 0; j < board.length; j++) {
+                JButton button = new JButton(board[i][j]);
+                button.setOpaque(true);
+                button.setBorderPainted(true);
+                button.setFocusPainted(false);
+                button.setContentAreaFilled(true);
+                button.setBackground(Color.WHITE);
+                button.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
+                gamePanel.add(button);
             }
         }
-        this.revalidate();
-        this.repaint();
+        gamePanel.revalidate();
+        gamePanel.repaint();
     }
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         SwingUtilities.invokeLater(() -> {
-            JFrame game;
             try {
-                game = new HuntGame();
+                HuntGame game =  new HuntGame();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-
         });
 
     }
