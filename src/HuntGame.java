@@ -6,13 +6,13 @@ import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
 public class HuntGame extends JFrame {
-    private JPanel gamePanel;
+    private final JPanel gamePanel;
     private GameBoard gameBoard;
     //private JButton[][] buttonBoard;
 
     public HuntGame() throws IOException, InterruptedException {
         setTitle("HuntGame");
-        setSize(500, 500);
+        setSize(600, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -74,15 +74,17 @@ public class HuntGame extends JFrame {
 
     private void createGrid(String[][] board) {
         gamePanel.removeAll();
-
-        for(int i = 0; i < board.length; i++) {
-            for(int j = 0; j < board.length; j++) {
-                JButton button = new JButton(board[i][j]);
+        String onIndex;
+        for (String[] strings : board) {
+            for (int j = 0; j < board.length; j++) {
+                onIndex = strings[j];
+                JButton button = new JButton(onIndex);
                 button.setOpaque(true);
                 button.setBorderPainted(true);
                 button.setFocusPainted(false);
                 button.setContentAreaFilled(true);
                 button.setBackground(Color.WHITE);
+                button.setForeground(Color.BLACK);
                 button.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
                 gamePanel.add(button);
             }
@@ -90,16 +92,9 @@ public class HuntGame extends JFrame {
         gamePanel.revalidate();
         gamePanel.repaint();
     }
-    public static void main(String[] args)  {
-        SwingUtilities.invokeLater(() -> {
-            try {
-                HuntGame game =  new HuntGame();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        });
+
+    public static void main(String[] args) throws IOException, InterruptedException {
+        HuntGame game = new HuntGame();
 
     }
 }
