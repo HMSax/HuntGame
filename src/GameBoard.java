@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class GameBoard {
-    private final String[][] gameBoardInit = {                                                             //Spelplanen
+    private String[][] gameBoard = {                                                             //Spelplanen
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
@@ -22,22 +22,17 @@ public class GameBoard {
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
     };
-    private String[][] gameBoard;
+   // private String[][] gameBoard;
     private String targetLocation = "  0 9";
     private String markerLocation = "  9 0";
 
-    public String[][] getGameBoard() {
-        return gameBoard;
+    //constructor för spelplanen
+    public GameBoard() {
+        this.gameBoard = gameBoard;
     }
 
-    //constructor för spelet
-    public GameBoard() {
-        gameBoard = new String[10][10];
-        for (int i = 0; i < gameBoardInit.length; i++) {
-            for (int j = 0; j < gameBoardInit[i].length; j++) {
-                gameBoard[i][j] = gameBoardInit[i][j];
-            }
-        }
+    public String[][] getGameBoard() {
+        return gameBoard;
     }
 
     public void setMarkerX(int indexx, int indexy, String marker) {     //Placerar X i arrayen

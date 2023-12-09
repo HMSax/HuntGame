@@ -21,7 +21,7 @@ public class HuntGame extends JFrame {
 
         gamePanel = new JPanel(new GridLayout(10, 10));
         gameBoard = new GameBoard();
-        createGrid(gameBoard.getGameBoard());
+        createGrid();
         add(gamePanel,BorderLayout.CENTER);
         initGame();
     }
@@ -72,12 +72,13 @@ public class HuntGame extends JFrame {
 
     }
 
-    private void createGrid(String[][] board) {
+    private void createGrid() {
         gamePanel.removeAll();
+        String[][] board = gameBoard.getGameBoard();
         String onIndex;
-        for (String[] strings : board) {
-            for (int j = 0; j < board.length; j++) {
-                onIndex = strings[j];
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                onIndex = board[i][j];
                 JButton button = new JButton(onIndex);
                 button.setOpaque(true);
                 button.setBorderPainted(true);
