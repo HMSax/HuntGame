@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class GameBoard {
+
     private String[][] gameBoard = {                                                             //Spelplanen
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
@@ -22,7 +23,6 @@ public class GameBoard {
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
     };
-   // private String[][] gameBoard;
     private String targetLocation = "  0 9";
     private String markerLocation = "  9 0";
 

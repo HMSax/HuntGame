@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
 public class HuntGame extends JFrame {
+
+    private final ImageIcon targetIcon = new ImageIcon("src/IconImages/TargetIconImage.png");
+    private final ImageIcon hunterIcon = new ImageIcon("src/IconImages/HunterIconImage.png");
     private final JPanel gamePanel;
     private GameBoard gameBoard;
     //private JButton[][] buttonBoard;
@@ -20,7 +23,7 @@ public class HuntGame extends JFrame {
         setResizable(false);
 
         gamePanel = new JPanel(new GridLayout(10, 10));
-        add(gamePanel,BorderLayout.CENTER);
+        add(gamePanel, BorderLayout.CENTER);
         initGame();
     }
 
@@ -70,18 +73,22 @@ public class HuntGame extends JFrame {
             playAgain = controller.readLine().toLowerCase().trim();
         } while (playAgain.equals("yes"));
         GameMessage.goodbye();
-
     }
 
     private void paintGrid() {
         gamePanel.removeAll();
         String[][] board = gameBoard.getGameBoard();
         String onIndex;
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
                 onIndex = board[i][j];
-                JButton button = new JButton(onIndex);
-                button.setOpaque(true);
+                JButton button = new JButton();
+                if (onIndex.equals(Hunter.hunterMark)) {
+                    button.setIcon(hunterIcon);
+                } else if (onIndex.equals(Target.targetMark)) {
+                    button.setIcon(targetIcon);
+                }
+                button.setOpaque(false);
                 button.setBorderPainted(true);
                 button.setFocusPainted(false);
                 button.setContentAreaFilled(true);
