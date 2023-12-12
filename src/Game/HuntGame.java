@@ -1,3 +1,8 @@
+package Game;
+
+import Factory.GridComponent;
+import Factory.GridComponentFactory;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedReader;
@@ -19,7 +24,7 @@ public class HuntGame extends JFrame {
     //private JButton[][] buttonBoard;
 
     public HuntGame() throws IOException, InterruptedException {
-        setTitle("HuntGame");
+        setTitle("Game.HuntGame");
         setSize(615, 645);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
