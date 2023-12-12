@@ -7,10 +7,13 @@ import java.util.concurrent.TimeUnit;
 
 public class HuntGame extends JFrame {
 
-    private final ImageIcon targetIcon = new ImageIcon("src/IconImages/TargetIconImage.png");
-    private final ImageIcon hunterIcon = new ImageIcon("src/IconImages/HunterIconImage.png");
+//    private final ImageIcon targetIcon = new ImageIcon("src/IconImages/TargetIconImage.png");
+//    private final ImageIcon hunterIcon = new ImageIcon("src/IconImages/HunterIconImage.png");
     private final JPanel gamePanel;
     private GameBoard gameBoard;
+    private GridComponent hunter;
+    private GridComponent target;
+
     //private JButton[][] buttonBoard;
 
     public HuntGame() throws IOException, InterruptedException {
@@ -31,9 +34,13 @@ public class HuntGame extends JFrame {
 
         String playAgain;
         do {                                                    //Sätter upp spelet
-            gameBoard = new GameBoard();
-            gameBoard.setMarkerX(4, 0, Hunter.hunterMark);
-            gameBoard.setTargetIT(4, 9, Target.targetMark);
+            GridComponentFactory gridComponentFactory = new GridComponentFactory();
+            hunter = gridComponentFactory.createGridComponent("hunter");
+            target = gridComponentFactory.createGridComponent("target");
+            gameBoard = new GameBoard(hunter.getCharMark(), target.getCharMark());
+
+            gameBoard.setMarkerX(4, 0, hunter.getCharMark());
+            gameBoard.setTargetIT(4, 9, target.getCharMark());
             BufferedReader controller = new BufferedReader(new InputStreamReader(System.in));
             GameMessage.welcome();
             TimeUnit.SECONDS.sleep(2);
@@ -83,10 +90,10 @@ public class HuntGame extends JFrame {
             for (int j = 0; j < board.length; j++) {
                 onIndex = board[i][j];
                 JButton button = new JButton();
-                if (onIndex.equals(Hunter.hunterMark)) {
-                    button.setIcon(hunterIcon);
-                } else if (onIndex.equals(Target.targetMark)) {
-                    button.setIcon(targetIcon);
+                if (onIndex.equals(hunter.getCharMark())) {
+                    button.setIcon(hunter.getIcon());
+                } else if (onIndex.equals(target.getCharMark())) {
+                    button.setIcon(target.getIcon());
                 }
                 button.setOpaque(false);
                 button.setBorderPainted(true);

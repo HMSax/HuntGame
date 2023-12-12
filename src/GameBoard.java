@@ -10,6 +10,8 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class GameBoard {
+    String hunterMark;
+    String targetMark;
 
     private String[][] gameBoard = {                                                             //Spelplanen
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
@@ -27,8 +29,10 @@ public class GameBoard {
     private String markerLocation = "  9 0";
 
     //constructor för spelplanen
-    public GameBoard() {
+    public GameBoard(String hunterMark, String targetMark) {
         this.gameBoard = gameBoard;
+        this.hunterMark = hunterMark;
+        this.targetMark = targetMark;
     }
 
     public String[][] getGameBoard() {
@@ -47,7 +51,7 @@ public class GameBoard {
         StringBuilder result = new StringBuilder(" ");
         for (int i = 0; i < this.gameBoard.length; i++) {
             for (int j = 0; j < this.gameBoard[i].length; j++) {
-                if (this.gameBoard[i][j].equals(Hunter.hunterMark)) {
+                if (this.gameBoard[i][j].equals(hunterMark)) {
                     result.append(" ").append(i);
                     result.append(" ").append(j);
                 }
@@ -66,10 +70,10 @@ public class GameBoard {
         while (tryAgain) {
             try {
                 switch (asdw) {
-                    case "s" -> this.gameBoard[locX + 1][locY] = Hunter.hunterMark;
-                    case "d" -> this.gameBoard[locX][locY + 1] = Hunter.hunterMark;
-                    case "w" -> this.gameBoard[locX - 1][locY] = Hunter.hunterMark;
-                    default -> this.gameBoard[locX][locY - 1] = Hunter.hunterMark;
+                    case "s" -> this.gameBoard[locX + 1][locY] = hunterMark;
+                    case "d" -> this.gameBoard[locX][locY + 1] = hunterMark;
+                    case "w" -> this.gameBoard[locX - 1][locY] = hunterMark;
+                    default -> this.gameBoard[locX][locY - 1] = hunterMark;
                 }
                 tryAgain = false;
             } catch (ArrayIndexOutOfBoundsException e) {
@@ -91,7 +95,7 @@ public class GameBoard {
         StringBuilder result = new StringBuilder(" ");
         for (int i = 0; i < this.gameBoard.length; i++) {
             for (int j = 0; j < this.gameBoard[i].length; j++) {
-                if (this.gameBoard[i][j].equals(Target.targetMark)) {
+                if (this.gameBoard[i][j].equals(targetMark)) {
                     result.append(" ").append(i);
                     result.append(" ").append(j);
                 }
@@ -114,19 +118,19 @@ public class GameBoard {
             double directionCounter = Math.random();
             try {
                 if (directionCounter < 0.20) {
-                    this.gameBoard[locX + 1][locY] = Target.targetMark;
+                    this.gameBoard[locX + 1][locY] = targetMark;
                     this.gameBoard[locX][locY] = "[  ]";
                 } else if (directionCounter < 0.40) {
-                    this.gameBoard[locX][locY + 1] = Target.targetMark;
+                    this.gameBoard[locX][locY + 1] = targetMark;
                     this.gameBoard[locX][locY] = "[  ]";
                 } else if (directionCounter < 0.60) {
-                    this.gameBoard[locX - 1][locY] = Target.targetMark;
+                    this.gameBoard[locX - 1][locY] = targetMark;
                     this.gameBoard[locX][locY] = "[  ]";
                 } else if (directionCounter < 0.80) {
-                    this.gameBoard[locX][locY - 1] = Target.targetMark;
+                    this.gameBoard[locX][locY - 1] = targetMark;
                     this.gameBoard[locX][locY] = "[  ]";
                 } else {
-                    this.gameBoard[locX][locY] = Target.targetMark;
+                    this.gameBoard[locX][locY] = targetMark;
                 }
                 tryAgain = false;
             } catch (ArrayIndexOutOfBoundsException e) {

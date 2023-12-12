@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fdfd6b8-851e-4acf-b112-4a7dca92f5be" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/IconImages/HunterIconImage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IconImages/TargetIconImage.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GridComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GridComponentFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HuntGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HuntGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Hunter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hunter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Target.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Target.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +21,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -53,7 +55,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "gui-fixes",
+    "git-widget-placeholder": "creating-facory-pattern",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Sax/Desktop/Javautveckling/Javaprojects/HuntGame/src",
     "node.js.detected.package.eslint": "true",
