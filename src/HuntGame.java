@@ -20,7 +20,7 @@ public class HuntGame extends JFrame {
 
     public HuntGame() throws IOException, InterruptedException {
         setTitle("HuntGame");
-        setSize(600, 600);
+        setSize(615, 645);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);

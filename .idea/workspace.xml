@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fdfd6b8-851e-4acf-b112-4a7dca92f5be" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/IconImages/map2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HuntGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HuntGame.java" afterDir="false" />
     </list>
@@ -159,7 +160,14 @@
       <option name="presentableId" value="LOCAL−00008" />
       <updated>1702379865108</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL−00009" summary="gui fixes">
+      <option name="closed" value="true" />
+      <created>1702381952765</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1702381952765</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +179,7 @@
     <MESSAGE value="initial commit with gui" />
     <MESSAGE value="initial commit with gui and readme" />
     <MESSAGE value="set up gridcomponents with factory pattern" />
-    <option name="LAST_COMMIT_MESSAGE" value="set up gridcomponents with factory pattern" />
+    <MESSAGE value="gui fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="gui fixes" />
   </component>
 </project>
