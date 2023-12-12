@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fdfd6b8-851e-4acf-b112-4a7dca92f5be" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GridComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/GridComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GridComponentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/GridComponentFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HuntGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HuntGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Hunter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/Hunter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Target.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/Target.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/HuntGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/HuntGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IconImages/map2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/IconImages/map2.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +52,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "creating-facory-pattern",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Sax/Desktop/Javautveckling/Javaprojects/HuntGame/src",
     "node.js.detected.package.eslint": "true",

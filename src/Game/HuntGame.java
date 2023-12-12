@@ -54,7 +54,7 @@ public class HuntGame extends JFrame {
             gameBoard.setTargetIT(4, 9, target.getCharMark());
             BufferedReader controller = new BufferedReader(new InputStreamReader(System.in));
             GameMessage.welcome();
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(1);
             boolean keepPlaying = true;
             while (keepPlaying) {
                 paintGrid();
