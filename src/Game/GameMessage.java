@@ -1,7 +1,8 @@
+package Game;
 
 public class GameMessage {
     static void welcome() {
-        System.out.println("Welcome to Catch IT! You are Hunter X.");
+        System.out.println("Welcome to Catch IT! You are Factory.Hunter X.");
     }
 
     static void howTo() {

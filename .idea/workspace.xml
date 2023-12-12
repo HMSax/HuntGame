@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fdfd6b8-851e-4acf-b112-4a7dca92f5be" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GridComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/GridComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GridComponentFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/GridComponentFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HuntGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HuntGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Hunter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/Hunter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Target.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Factory/Target.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +56,7 @@
     "Application.HuntGame.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "creating-facory-pattern",
     "kotlin-language-version-configured": "true",
@@ -72,7 +81,7 @@
   </component>
   <component name="RunManager">
     <configuration name="HuntGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="HuntGame" />
+      <option name="MAIN_CLASS_NAME" value="Game.HuntGame" />
       <module name="HuntGame" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -80,6 +89,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.HuntGame" />
         <item itemvalue="Application.HuntGame" />
       </list>
     </recent_temporary>
