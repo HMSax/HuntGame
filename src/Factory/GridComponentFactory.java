@@ -12,7 +12,8 @@ public class GridComponentFactory{
             case "TARGET":
                 return new Target();
             default:
-                throw new IllegalArgumentException("Unknown component type "+type);
+                System.out.println("Unknown component type "+type);
+                return null;
         }
     }
 }
