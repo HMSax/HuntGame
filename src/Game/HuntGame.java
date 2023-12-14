@@ -29,7 +29,7 @@ public class HuntGame extends JFrame {
 
     public HuntGame() throws IOException, InterruptedException {
         setTitle("Game.HuntGame");
-        setSize(615, 645);
+        setSize(615, 660);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -41,6 +41,11 @@ public class HuntGame extends JFrame {
         backgroundLabel.setIcon(backgroundImage);
         backgroundLabel.setLayout(new GridLayout(10,10));
         gamePanel.add(backgroundLabel);
+
+        message = new GameMessage();
+        messageLabel = message.currentMessage;
+
+        add(messageLabel,BorderLayout.NORTH);
         add(gamePanel, BorderLayout.CENTER);
         initGame();
     }
@@ -52,11 +57,10 @@ public class HuntGame extends JFrame {
             GridComponentFactory gridComponentFactory = new GridComponentFactory();
             hunter = gridComponentFactory.createGridComponent("hunter");
             target = gridComponentFactory.createGridComponent("target");
-            message = new GameMessage();
             gameBoard = new GameBoard(hunter.getCharMark(), target.getCharMark(), message);
-
             gameBoard.setMarkerX(4, 0, hunter.getCharMark());
             gameBoard.setTargetIT(4, 9, target.getCharMark());
+
             BufferedReader controller = new BufferedReader(new InputStreamReader(System.in));
             message.welcome();
             TimeUnit.SECONDS.sleep(1);
