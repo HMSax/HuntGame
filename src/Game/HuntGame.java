@@ -25,7 +25,6 @@ public class HuntGame extends JFrame {
     private GameMessage message;
     private GridComponent hunter;
     private GridComponent target;
-
     private char lastPressedKey;
 
 
@@ -63,7 +62,6 @@ public class HuntGame extends JFrame {
         initGame();
         setFocusable(true);  // Se till att fönstret har fokus så att KeyListener fungerar
     }
-
     private void handleKeyPress(char keyChar) {
         switch (Character.toLowerCase(keyChar)) {
             case 'w':
@@ -74,22 +72,51 @@ public class HuntGame extends JFrame {
                     gameBoard.moveMarker(Character.toString(keyChar));
                     paintGrid();
                     if (checkIfWin()){
-                        JOptionPane.showMessageDialog(null, "You win!");
+                        int option = JOptionPane.showConfirmDialog(null, "Congratulations, you won!\nDo you want to play again?",
+                                "GAME OVER",
+                                JOptionPane.YES_NO_OPTION);
+                        if (option == JOptionPane.YES_OPTION) {
+                            playAgain();
+                        }else {
+                            System.exit(0);
+                        }
+
                     } else {
                         gameBoard.moveTarget();
                         paintGrid();
                         if (checkIfLose()){
-                            JOptionPane.showMessageDialog(null, "You lose!");
+                            int option = JOptionPane.showConfirmDialog(null, "Sorry, you lost!\nDo you want to play again?",
+                                    "GAME OVER",
+                                    JOptionPane.YES_NO_OPTION);
+                            if (option == JOptionPane.YES_OPTION){
+                                playAgain();
+                            }else
+                                System.exit(0);
                         }
                     }
                     paintGrid();
                     lastPressedKey = keyChar;
                 } catch (IOException e) {
                     e.printStackTrace();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
                 }
                 break;
             default: message.tryAgain();
         }
+
+    }
+    private void playAgain() throws IOException, InterruptedException {
+        GridComponentFactory gridComponentFactory = new GridComponentFactory();
+        hunter = gridComponentFactory.createGridComponent(GridComponentTypes.HUNTER);
+        target = gridComponentFactory.createGridComponent(GridComponentTypes.TARGET);
+        gameBoard = new GameBoard(hunter.getCharMark(), target.getCharMark(), message);
+        gameBoard.setMarkerX(4, 0, hunter.getCharMark());
+        gameBoard.setTargetIT(4, 9, target.getCharMark());
+
+        paintGrid();
+        message.welcome();
+        TimeUnit.SECONDS.sleep(1);
     }
 
     private void initGame() throws InterruptedException, IOException {
