@@ -1,8 +1,6 @@
 package Game;
 
 import javax.swing.*;
-import java.awt.desktop.ScreenSleepEvent;
-import java.util.concurrent.TimeUnit;
 
 public class GameMessage {
     private JLabel currentMessage = new JLabel("");

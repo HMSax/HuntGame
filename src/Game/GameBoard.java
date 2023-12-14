@@ -1,6 +1,5 @@
 package Game;
 
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -9,7 +8,6 @@ public class GameBoard {
     private final String hunterMark;
     private final String targetMark;
     private final GameMessage message;
-
     private String[][] gameBoard = {                                                             //Spelplanen
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
@@ -27,7 +25,6 @@ public class GameBoard {
 
     //constructor för spelplanen
     public GameBoard(String hunterMark, String targetMark, GameMessage message) {
-        this.gameBoard = gameBoard;
         this.hunterMark = hunterMark;
         this.targetMark = targetMark;
         this.message = message;
@@ -60,7 +57,7 @@ public class GameBoard {
     }
 
 
-    public void moveMarker(String aSDW) throws InputMismatchException, IOException {            //Flyttar X åt något håller beroende på vad användaren anger.
+    public void moveMarker(String aSDW) throws InputMismatchException {            //Flyttar X åt något håller beroende på vad användaren anger.
         String asdw = aSDW.toLowerCase();
         Scanner scan = new Scanner(this.locationOfMarkerX());
         int locX = scan.nextInt();
@@ -74,7 +71,6 @@ public class GameBoard {
             }
         } catch (ArrayIndexOutOfBoundsException | NoSuchElementException e) {
             message.moveOutsideBoard();
-
             return;
         }
         this.markerLocation = this.locationOfMarkerX();
