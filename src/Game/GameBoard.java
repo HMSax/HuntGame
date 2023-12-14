@@ -1,15 +1,14 @@
 package Game;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class GameBoard {
-    private String hunterMark;
-    private String targetMark;
-    private GameMessage message;
+    private final String hunterMark;
+    private final String targetMark;
+    private final GameMessage message;
 
     private String[][] gameBoard = {                                                             //Spelplanen
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
@@ -60,26 +59,23 @@ public class GameBoard {
         return result.toString();
     }
 
+
     public void moveMarker(String aSDW) throws InputMismatchException, IOException {            //Flyttar X åt något håller beroende på vad användaren anger.
         String asdw = aSDW.toLowerCase();
         Scanner scan = new Scanner(this.locationOfMarkerX());
-        boolean tryAgain = true;
         int locX = scan.nextInt();
         int locY = scan.nextInt();
-        while (tryAgain) {
-            try {
-                switch (asdw) {
-                    case "s" -> this.gameBoard[locX + 1][locY] = hunterMark;
-                    case "d" -> this.gameBoard[locX][locY + 1] = hunterMark;
-                    case "w" -> this.gameBoard[locX - 1][locY] = hunterMark;
-                    default -> this.gameBoard[locX][locY - 1] = hunterMark;
-                }
-                tryAgain = false;
-            } catch (ArrayIndexOutOfBoundsException e) {
-                message.moveOutsideBoard();
-                BufferedReader control = new BufferedReader(new InputStreamReader(System.in));
-                asdw = control.readLine();
+        try {
+            switch (asdw) {
+                case "s" -> this.gameBoard[locX + 1][locY] = hunterMark;
+                case "d" -> this.gameBoard[locX][locY + 1] = hunterMark;
+                case "w" -> this.gameBoard[locX - 1][locY] = hunterMark;
+                default -> this.gameBoard[locX][locY - 1] = hunterMark;
             }
+        } catch (ArrayIndexOutOfBoundsException | NoSuchElementException e) {
+            message.moveOutsideBoard();
+
+            return;
         }
         this.markerLocation = this.locationOfMarkerX();
         this.gameBoard[locX][locY] = "[  ]";

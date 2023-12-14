@@ -6,6 +6,8 @@ import Factory.GridComponentTypes;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 public class HuntGame extends JFrame {
 
-//    private final ImageIcon targetIcon = new ImageIcon("src/IconImages/TargetIconImage.png");
+    //    private final ImageIcon targetIcon = new ImageIcon("src/IconImages/TargetIconImage.png");
 //    private final ImageIcon hunterIcon = new ImageIcon("src/IconImages/HunterIconImage.png");
     private final ImageIcon backgroundImage = new ImageIcon("src/IconImages/map2.jpg");
     private final JPanel gamePanel;
@@ -23,6 +25,8 @@ public class HuntGame extends JFrame {
     private GameMessage message;
     private GridComponent hunter;
     private GridComponent target;
+
+    private char lastPressedKey;
 
 
 
@@ -40,7 +44,7 @@ public class HuntGame extends JFrame {
         gamePanel = new JPanel();
         backgroundLabel = new JLabel();
         backgroundLabel.setIcon(backgroundImage);
-        backgroundLabel.setLayout(new GridLayout(10,10));
+        backgroundLabel.setLayout(new GridLayout(10, 10));
         gamePanel.add(backgroundLabel);
 
         message = new GameMessage();
@@ -48,7 +52,39 @@ public class HuntGame extends JFrame {
 
         add(messageLabel,BorderLayout.NORTH);
         add(gamePanel, BorderLayout.CENTER);
+
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                handleKeyPress(e.getKeyChar());
+                System.out.println(e.getKeyChar() + " Pressed");
+            }
+        });
         initGame();
+        setFocusable(true);  // Se till att fönstret har fokus så att KeyListener fungerar
+    }
+
+    private void handleKeyPress(char keyChar) {
+        switch (Character.toLowerCase(keyChar)) {
+            case 'w':
+            case 'a':
+            case 's':
+            case 'd':
+                try {
+                    gameBoard.moveMarker(Character.toString(keyChar));
+                    if (checkIfWin()){
+                        JOptionPane.showMessageDialog(null, "You win!");
+                    } else {
+                        gameBoard.moveTarget();
+                    }
+                    paintGrid();
+                    lastPressedKey = keyChar;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            default: message.tryAgain();
+        }
     }
 
     private void initGame() throws InterruptedException, IOException {
@@ -73,21 +109,14 @@ public class HuntGame extends JFrame {
                 String aSDW = controller.readLine().toLowerCase().trim();
                 boolean correctController = true;
                 while (correctController) {
-                    if (aSDW.equals("a") || aSDW.equals("s") || aSDW.equals("d") || aSDW.equals("w")) {
-                        gameBoard.moveMarker(aSDW);
+                    if (getLastPressedKey() == 'a' || getLastPressedKey() == 's' ||
+                            getLastPressedKey() == 'd' || getLastPressedKey() == 'w') {
+                        handleKeyPress(getLastPressedKey());
                         correctController = false;
                     } else {
                         message.tryAgain();
                         aSDW = controller.readLine().toLowerCase().trim();
                     }
-                }
-                if (gameBoard.locationOfMarkerX().equals(gameBoard.getTargetLocation())) {
-                    System.out.println("\n");
-                    System.out.println(gameBoard);
-                    message.winner();
-                    keepPlaying = false;
-                } else {
-                    gameBoard.moveTarget();
                 }
                 if (gameBoard.locationOfTarget().equals(gameBoard.getMarkerLocation())) {
                     System.out.println("\n");
@@ -104,6 +133,14 @@ public class HuntGame extends JFrame {
         message.goodbye();
     }
 
+    public boolean checkIfWin(){
+        if (gameBoard.locationOfMarkerX().equals(gameBoard.getTargetLocation())) {
+            message.winner();
+            return true;
+        }
+        return false;
+    }
+
     private void paintGrid() {
         backgroundLabel.removeAll();
         String[][] board = gameBoard.getGameBoard();
@@ -116,8 +153,9 @@ public class HuntGame extends JFrame {
                     button.setIcon(hunter.getIcon());
                 } else if (onIndex.equals(target.getCharMark())) {
                     button.setIcon(target.getIcon());
+                } else {
+                    button.setVisible(false);
                 }
-                else { button.setVisible(false);}
                 button.setOpaque(true);
                 button.setBorderPainted(true);
                 button.setFocusPainted(false);
@@ -130,6 +168,10 @@ public class HuntGame extends JFrame {
         }
         backgroundLabel.revalidate();
         backgroundLabel.repaint();
+    }
+
+    public char getLastPressedKey() {
+        return lastPressedKey;
     }
 
     public static void main(String[] args) throws IOException, InterruptedException {
