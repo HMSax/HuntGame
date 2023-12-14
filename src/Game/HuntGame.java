@@ -72,10 +72,15 @@ public class HuntGame extends JFrame {
             case 'd':
                 try {
                     gameBoard.moveMarker(Character.toString(keyChar));
+                    paintGrid();
                     if (checkIfWin()){
                         JOptionPane.showMessageDialog(null, "You win!");
                     } else {
                         gameBoard.moveTarget();
+                        paintGrid();
+                        if (checkIfLose()){
+                            JOptionPane.showMessageDialog(null, "You lose!");
+                        }
                     }
                     paintGrid();
                     lastPressedKey = keyChar;
@@ -88,7 +93,6 @@ public class HuntGame extends JFrame {
     }
 
     private void initGame() throws InterruptedException, IOException {
-
         String playAgain;
         do {                                                    //Sätter upp spelet
             GridComponentFactory gridComponentFactory = new GridComponentFactory();
@@ -136,6 +140,14 @@ public class HuntGame extends JFrame {
     public boolean checkIfWin(){
         if (gameBoard.locationOfMarkerX().equals(gameBoard.getTargetLocation())) {
             message.winner();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkIfLose(){
+        if (gameBoard.locationOfTarget().equals(gameBoard.getMarkerLocation())){
+            message.loser();
             return true;
         }
         return false;
