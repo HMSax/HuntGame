@@ -56,6 +56,8 @@ public class MainMenu extends JFrame {
         instructionButton.setPreferredSize(new Dimension(200, 50));
         quitButton.setPreferredSize(new Dimension(200, 50));
 
+        // run newGame
+
         // Instructions panel
         instructionsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         instructionsPanel.add(instructionsText);
