@@ -2,6 +2,7 @@ package Game;
 
 import Factory.GridComponent;
 import Factory.GridComponentFactory;
+import Factory.GridComponentTypes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,15 +18,19 @@ public class HuntGame extends JFrame {
     private final ImageIcon backgroundImage = new ImageIcon("src/IconImages/map2.jpg");
     private final JPanel gamePanel;
     private final JLabel backgroundLabel;
+    private JLabel messageLabel;
     private GameBoard gameBoard;
+    private GameMessage message;
     private GridComponent hunter;
     private GridComponent target;
+
+
 
     //private JButton[][] buttonBoard;
 
     public HuntGame() throws IOException, InterruptedException {
         setTitle("Game.HuntGame");
-        setSize(615, 645);
+        setSize(615, 660);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -37,6 +42,11 @@ public class HuntGame extends JFrame {
         backgroundLabel.setIcon(backgroundImage);
         backgroundLabel.setLayout(new GridLayout(10,10));
         gamePanel.add(backgroundLabel);
+
+        message = new GameMessage();
+        messageLabel = message.getCurrentMessage();
+
+        add(messageLabel,BorderLayout.NORTH);
         add(gamePanel, BorderLayout.CENTER);
         initGame();
     }
@@ -46,19 +56,19 @@ public class HuntGame extends JFrame {
         String playAgain;
         do {                                                    //Sätter upp spelet
             GridComponentFactory gridComponentFactory = new GridComponentFactory();
-            hunter = gridComponentFactory.createGridComponent("hunter");
-            target = gridComponentFactory.createGridComponent("target");
-            gameBoard = new GameBoard(hunter.getCharMark(), target.getCharMark());
-
+            hunter = gridComponentFactory.createGridComponent(GridComponentTypes.HUNTER);
+            target = gridComponentFactory.createGridComponent(GridComponentTypes.TARGET);
+            gameBoard = new GameBoard(hunter.getCharMark(), target.getCharMark(), message);
             gameBoard.setMarkerX(4, 0, hunter.getCharMark());
             gameBoard.setTargetIT(4, 9, target.getCharMark());
+
             BufferedReader controller = new BufferedReader(new InputStreamReader(System.in));
-            GameMessage.welcome();
-            TimeUnit.SECONDS.sleep(1);
+            message.welcome();
+            TimeUnit.SECONDS.sleep(2);
             boolean keepPlaying = true;
             while (keepPlaying) {
                 paintGrid();
-                GameMessage.howTo();
+                message.howTo();
                 System.out.println(gameBoard);
                 String aSDW = controller.readLine().toLowerCase().trim();
                 boolean correctController = true;
@@ -67,14 +77,14 @@ public class HuntGame extends JFrame {
                         gameBoard.moveMarker(aSDW);
                         correctController = false;
                     } else {
-                        GameMessage.tryAgain();
+                        message.tryAgain();
                         aSDW = controller.readLine().toLowerCase().trim();
                     }
                 }
                 if (gameBoard.locationOfMarkerX().equals(gameBoard.getTargetLocation())) {
                     System.out.println("\n");
                     System.out.println(gameBoard);
-                    GameMessage.winner();
+                    message.winner();
                     keepPlaying = false;
                 } else {
                     gameBoard.moveTarget();
@@ -82,15 +92,16 @@ public class HuntGame extends JFrame {
                 if (gameBoard.locationOfTarget().equals(gameBoard.getMarkerLocation())) {
                     System.out.println("\n");
                     System.out.println(gameBoard);
-                    GameMessage.loser();
+                    message.loser();
                     keepPlaying = false;
                 }
             }
             paintGrid();
-            GameMessage.playAgain();
+            TimeUnit.SECONDS.sleep(2);
+            message.playAgain();
             playAgain = controller.readLine().toLowerCase().trim();
-        } while (playAgain.equals("yes"));
-        GameMessage.goodbye();
+        } while (playAgain.equals("y"));
+        message.goodbye();
     }
 
     private void paintGrid() {

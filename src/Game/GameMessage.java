@@ -1,36 +1,61 @@
 package Game;
 
+import javax.swing.*;
+import java.awt.desktop.ScreenSleepEvent;
+import java.util.concurrent.TimeUnit;
+
 public class GameMessage {
-    static void welcome() {
-        System.out.println("Welcome to Catch IT! You are Factory.Hunter X.");
+    private JLabel currentMessage = new JLabel("");
+
+    public GameMessage(){}
+    public JLabel getCurrentMessage() {
+        return currentMessage;
     }
 
-    static void howTo() {
-        System.out.println("Write A,S,D or W (and press enter) to move the HX left(A),right(D),up(W) or down(S)");
-        System.out.println("and try to catch IT. WARNING: Don't let it catch you! You move before IT moves.");
+    private void printIt(String message) {
+        System.out.println(message);
+        currentMessage.setText(message);
+        currentMessage.revalidate();
+        currentMessage.repaint();
+    }
+    public void welcome() {
+        String welcome = "Welcome to HuntGame! You are the hunter. Catch the target! Don't let the target catch you!";
+        printIt(welcome);
+
     }
 
-    static void tryAgain() {
-        System.out.println("Try again! Use A,S,D or W.");
+
+    public void howTo() {
+        String howTo = "Write A,S,D or W (and press enter) to move left(A),right(D),up(W) or down(S).";
+        printIt(howTo);
     }
 
-    static void moveOutsideBoard() {
-        System.out.println("You are trying to move outside the board or didn't write A,S,D or W. Try again!");
+    public void tryAgain() {
+        String tryAgain = "Try again! Use A,S,D or W.";
+        printIt(tryAgain);
     }
 
-    static void winner() {
-        System.out.println("You caught IT! Yay!");
+    public void moveOutsideBoard() {
+        String moveOutside = "You are trying to move outside the board or didn't write A,S,D or W. Try again!";
+        printIt(moveOutside);
     }
 
-    static void loser() {
-        System.out.println("It caught YOU! Oh no!");
+    public void winner() {
+        String winner = "You caught the target! Yay!";
+        printIt(winner);
     }
 
-    static void playAgain() {
-        System.out.println("Play again? (Yes/No)");
+    public void loser() {
+        String loser = "The target caught YOU! Oh no!";
+        printIt(loser);
     }
 
-    static void goodbye() {
-        System.out.println("Goodbye!");
+    public void playAgain() {
+        String playAgain = "Play again? (Y/N) +enter";
+        printIt(playAgain);
+    }
+    public void goodbye() {
+        String goodbye = "Goodbye!";
+        printIt(goodbye);
     }
 }

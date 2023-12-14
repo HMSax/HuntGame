@@ -7,8 +7,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameBoard {
-    String hunterMark;
-    String targetMark;
+    private String hunterMark;
+    private String targetMark;
+    private GameMessage message;
 
     private String[][] gameBoard = {                                                             //Spelplanen
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
@@ -26,10 +27,11 @@ public class GameBoard {
     private String markerLocation = "  9 0";
 
     //constructor för spelplanen
-    public GameBoard(String hunterMark, String targetMark) {
+    public GameBoard(String hunterMark, String targetMark, GameMessage message) {
         this.gameBoard = gameBoard;
         this.hunterMark = hunterMark;
         this.targetMark = targetMark;
+        this.message = message;
     }
 
     public String[][] getGameBoard() {
@@ -74,7 +76,7 @@ public class GameBoard {
                 }
                 tryAgain = false;
             } catch (ArrayIndexOutOfBoundsException e) {
-                GameMessage.moveOutsideBoard();
+                message.moveOutsideBoard();
                 BufferedReader control = new BufferedReader(new InputStreamReader(System.in));
                 asdw = control.readLine();
             }
