@@ -63,7 +63,7 @@ public class HuntGame extends JFrame {
 
             BufferedReader controller = new BufferedReader(new InputStreamReader(System.in));
             message.welcome();
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(2);
             boolean keepPlaying = true;
             while (keepPlaying) {
                 paintGrid();
@@ -96,6 +96,7 @@ public class HuntGame extends JFrame {
                 }
             }
             paintGrid();
+            TimeUnit.SECONDS.sleep(2);
             message.playAgain();
             playAgain = controller.readLine().toLowerCase().trim();
         } while (playAgain.equals("y"));
