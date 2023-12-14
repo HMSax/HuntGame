@@ -5,11 +5,9 @@ import java.awt.desktop.ScreenSleepEvent;
 import java.util.concurrent.TimeUnit;
 
 public class GameMessage {
-    JLabel currentMessage = new JLabel("");
+    private JLabel currentMessage = new JLabel("");
 
-    public GameMessage(){
-
-    }
+    public GameMessage(){}
     public JLabel getCurrentMessage() {
         return currentMessage;
     }

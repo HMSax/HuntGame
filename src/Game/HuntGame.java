@@ -44,7 +44,7 @@ public class HuntGame extends JFrame {
         gamePanel.add(backgroundLabel);
 
         message = new GameMessage();
-        messageLabel = message.currentMessage;
+        messageLabel = message.getCurrentMessage();
 
         add(messageLabel,BorderLayout.NORTH);
         add(gamePanel, BorderLayout.CENTER);
