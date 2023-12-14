@@ -123,6 +123,5 @@ public class HuntGame extends JFrame {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         HuntGame game = new HuntGame();
-
     }
 }

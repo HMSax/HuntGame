@@ -12,7 +12,7 @@ public class MainMenu extends JFrame {
     // Main menu panel
     private JPanel menuPanel = new JPanel();
     private JButton newGameButton = new JButton("New Game");
-    private JButton b2 = new JButton("Button 2");
+    private JButton controlsButton = new JButton("Controls");
     private JButton creatorsButton = new JButton("Creators");
     private JButton instructionButton = new JButton("Game Instructions");
     private JButton quitButton = new JButton("QUIT");
@@ -25,7 +25,12 @@ public class MainMenu extends JFrame {
     // Instruction panel.
     private JPanel instructionsPanel = new JPanel();
     private JTextArea instructionsText = new JTextArea("TExt:\n Text: \n Text: \n Text:");
-    private JButton InstructionsBackButton = new JButton("Go Back");
+    private JButton instructionsBackButton = new JButton("Go Back");
+
+    // Controls panel
+    private JPanel controlsPanel = new JPanel();
+    private JTextArea controlsText = new JTextArea("TExt:\n Text: \n Text: \n Text:");
+    private JButton controlsBackButton = new JButton("Go Back");
 
 
     public MainMenu() {
@@ -34,16 +39,19 @@ public class MainMenu extends JFrame {
         ActionListener instructionsListener = ae -> showInstructionsPanel();
         ActionListener creatorsListener = ae -> showCreatorPanel();
         ActionListener goBackListener = ae -> showMenuPanel();
+        ActionListener conrolListener = ae -> showControlPanel();
 
         // Menu panel
         menuPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         menuPanel.add(newGameButton);
-        menuPanel.add(b2);
+        menuPanel.add(controlsButton);
         menuPanel.add(creatorsButton);
         menuPanel.add(instructionButton);
         menuPanel.add(quitButton);
+
+        // button size
         newGameButton.setPreferredSize(new Dimension(200, 50));
-        b2.setPreferredSize(new Dimension(200, 50));
+        controlsButton.setPreferredSize(new Dimension(200, 50));
         creatorsButton.setPreferredSize(new Dimension(200, 50));
         instructionButton.setPreferredSize(new Dimension(200, 50));
         quitButton.setPreferredSize(new Dimension(200, 50));
@@ -51,25 +59,35 @@ public class MainMenu extends JFrame {
         // Instructions panel
         instructionsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         instructionsPanel.add(instructionsText);
-        instructionsPanel.add(InstructionsBackButton);
+        instructionsPanel.add(instructionsBackButton);
 
         // Creator ponel
         creatorPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         creatorPanel.add(creatorText);
         creatorPanel.add(creatorBackButton);
 
+        // controls panel
+        controlsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        controlsPanel.add(controlsText);
+        controlsPanel.add(controlsBackButton);
+
+
         // Add panels to cardPanel
         cardPanel.add(menuPanel, "menu");
         cardPanel.add(instructionsPanel, "instructions");
         cardPanel.add(creatorPanel, "creators");
+        cardPanel.add(controlsPanel, "controls");
 
         // add ActionListeners to buttons
         quitButton.addActionListener(exitListener);
         instructionButton.addActionListener(instructionsListener);
         creatorsButton.addActionListener(creatorsListener);
+        controlsButton.addActionListener(conrolListener);
 
-        InstructionsBackButton.addActionListener(goBackListener);
+        // Go back buttons
+        instructionsBackButton.addActionListener(goBackListener);
         creatorBackButton.addActionListener(goBackListener);
+        controlsBackButton.addActionListener(goBackListener);
 
         //
         showMenuPanel();
@@ -83,13 +101,14 @@ public class MainMenu extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             MainMenu m = new MainMenu();
         });
     }
 
+
+    // CardLayout methods
     private void showInstructionsPanel() {
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
         cardLayout.show(cardPanel, "instructions");
@@ -103,4 +122,9 @@ public class MainMenu extends JFrame {
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
         cardLayout.show(cardPanel, "creators");
     }
+    private void showControlPanel() {
+        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+        cardLayout.show(cardPanel, "controls");
+    }
+
 }
