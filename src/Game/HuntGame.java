@@ -17,9 +17,13 @@ public class HuntGame extends JFrame {
     private final ImageIcon backgroundImage = new ImageIcon("src/IconImages/map2.jpg");
     private final JPanel gamePanel;
     private final JLabel backgroundLabel;
+    private JLabel messageLabel;
     private GameBoard gameBoard;
+    private GameMessage message;
     private GridComponent hunter;
     private GridComponent target;
+
+
 
     //private JButton[][] buttonBoard;
 
@@ -48,17 +52,18 @@ public class HuntGame extends JFrame {
             GridComponentFactory gridComponentFactory = new GridComponentFactory();
             hunter = gridComponentFactory.createGridComponent("hunter");
             target = gridComponentFactory.createGridComponent("target");
-            gameBoard = new GameBoard(hunter.getCharMark(), target.getCharMark());
+            message = new GameMessage();
+            gameBoard = new GameBoard(hunter.getCharMark(), target.getCharMark(), message);
 
             gameBoard.setMarkerX(4, 0, hunter.getCharMark());
             gameBoard.setTargetIT(4, 9, target.getCharMark());
             BufferedReader controller = new BufferedReader(new InputStreamReader(System.in));
-            GameMessage.welcome();
+            message.welcome();
             TimeUnit.SECONDS.sleep(1);
             boolean keepPlaying = true;
             while (keepPlaying) {
                 paintGrid();
-                GameMessage.howTo();
+                message.howTo();
                 System.out.println(gameBoard);
                 String aSDW = controller.readLine().toLowerCase().trim();
                 boolean correctController = true;
@@ -67,14 +72,14 @@ public class HuntGame extends JFrame {
                         gameBoard.moveMarker(aSDW);
                         correctController = false;
                     } else {
-                        GameMessage.tryAgain();
+                        message.tryAgain();
                         aSDW = controller.readLine().toLowerCase().trim();
                     }
                 }
                 if (gameBoard.locationOfMarkerX().equals(gameBoard.getTargetLocation())) {
                     System.out.println("\n");
                     System.out.println(gameBoard);
-                    GameMessage.winner();
+                    message.winner();
                     keepPlaying = false;
                 } else {
                     gameBoard.moveTarget();
@@ -82,15 +87,15 @@ public class HuntGame extends JFrame {
                 if (gameBoard.locationOfTarget().equals(gameBoard.getMarkerLocation())) {
                     System.out.println("\n");
                     System.out.println(gameBoard);
-                    GameMessage.loser();
+                    message.loser();
                     keepPlaying = false;
                 }
             }
             paintGrid();
-            GameMessage.playAgain();
+            message.playAgain();
             playAgain = controller.readLine().toLowerCase().trim();
-        } while (playAgain.equals("yes"));
-        GameMessage.goodbye();
+        } while (playAgain.equals("y"));
+        message.goodbye();
     }
 
     private void paintGrid() {
