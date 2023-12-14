@@ -2,6 +2,7 @@ package Game;
 
 import Factory.GridComponent;
 import Factory.GridComponentFactory;
+import Factory.GridComponentTypes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,8 +56,8 @@ public class HuntGame extends JFrame {
         String playAgain;
         do {                                                    //Sätter upp spelet
             GridComponentFactory gridComponentFactory = new GridComponentFactory();
-            hunter = gridComponentFactory.createGridComponent("hunter");
-            target = gridComponentFactory.createGridComponent("target");
+            hunter = gridComponentFactory.createGridComponent(GridComponentTypes.HUNTER);
+            target = gridComponentFactory.createGridComponent(GridComponentTypes.TARGET);
             gameBoard = new GameBoard(hunter.getCharMark(), target.getCharMark(), message);
             gameBoard.setMarkerX(4, 0, hunter.getCharMark());
             gameBoard.setTargetIT(4, 9, target.getCharMark());

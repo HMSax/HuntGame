@@ -1,19 +1,18 @@
 package Factory;
 
 public class GridComponentFactory{
-    public GridComponent createGridComponent(String type)
+    public GridComponent createGridComponent(GridComponentTypes type)
     {
-        if (type == null || type.isEmpty())
+        if (type == null)
             return null;
-        type = type.trim().toUpperCase();
+
         switch (type) {
-            case "HUNTER":
+            case HUNTER:
                 return new Hunter();
-            case "TARGET":
+            case TARGET:
                 return new Target();
             default:
-                System.out.println("Unknown component type "+type);
-                return null;
+                throw new IllegalArgumentException("Unknown component type "+type);
         }
     }
 }
