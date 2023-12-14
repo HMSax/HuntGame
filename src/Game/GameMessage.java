@@ -14,39 +14,50 @@ public class GameMessage {
         return currentMessage;
     }
 
-    public void welcome() {
-        System.out.println("Welcome to Catch IT! You are the hunter. Catch the target!");
-        currentMessage.setText("Welcome to Catch IT! You are the hunter. Catch the target!");
+    private void printIt(String message) {
+        System.out.println(message);
+        currentMessage.setText(message);
         currentMessage.revalidate();
         currentMessage.repaint();
+    }
+    public void welcome() {
+        String welcome = "Welcome to HuntGame! You are the hunter. Catch the target! Don't let the target catch you!";
+        printIt(welcome);
 
     }
 
+
     public void howTo() {
-        System.out.println("Write A,S,D or W (and press enter) to move left(A),right(D),up(W) or down(S)\n " +
-                            "WARNING: Don't let the target catch you! You move before the target moves.");
+        String howTo = "Write A,S,D or W (and press enter) to move left(A),right(D),up(W) or down(S).";
+        printIt(howTo);
     }
 
     public void tryAgain() {
-        System.out.println("Try again! Use A,S,D or W.");
+        String tryAgain = "Try again! Use A,S,D or W.";
+        printIt(tryAgain);
     }
 
     public void moveOutsideBoard() {
-        System.out.println("You are trying to move outside the board or didn't write A,S,D or W. Try again!");
+        String moveOutside = "You are trying to move outside the board or didn't write A,S,D or W. Try again!";
+        printIt(moveOutside);
     }
 
     public void winner() {
-        System.out.println("You caught IT! Yay!");
+        String winner = "You caught the target! Yay!";
+        printIt(winner);
     }
 
     public void loser() {
-        System.out.println("It caught YOU! Oh no!");
+        String loser = "The target caught YOU! Oh no!";
+        printIt(loser);
     }
 
     public void playAgain() {
-        System.out.println("Play again? (Y/N)");
+        String playAgain = "Play again? (Y/N) +enter";
+        printIt(playAgain);
     }
     public void goodbye() {
-        System.out.println("Goodbye!");
+        String goodbye = "Goodbye!";
+        printIt(goodbye);
     }
 }
