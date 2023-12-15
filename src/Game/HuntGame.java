@@ -15,8 +15,6 @@ import java.util.concurrent.TimeUnit;
 
 public class HuntGame extends JFrame {
 
-    //    private final ImageIcon targetIcon = new ImageIcon("src/IconImages/TargetIconImage.png");
-//    private final ImageIcon hunterIcon = new ImageIcon("src/IconImages/HunterIconImage.png");
     private final ImageIcon backgroundImage = new ImageIcon("src/IconImages/map2.jpg");
     private final JPanel gamePanel;
     private final JLabel backgroundLabel;
@@ -26,10 +24,6 @@ public class HuntGame extends JFrame {
     private GridComponent hunter;
     private GridComponent target;
     private char lastPressedKey;
-
-
-
-    //private JButton[][] buttonBoard;
 
     public HuntGame() throws IOException, InterruptedException {
         setTitle("Game.HuntGame");
@@ -199,8 +193,6 @@ public class HuntGame extends JFrame {
                 button.setBorderPainted(true);
                 button.setFocusPainted(false);
                 button.setContentAreaFilled(true);
-                //button.setBackground(Color.WHITE);
-                //button.setForeground(Color.BLACK);
                 button.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
                 backgroundLabel.add(button);
             }

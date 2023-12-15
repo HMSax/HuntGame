@@ -60,7 +60,7 @@ public class GameBoard {
     }
 
 
-    public void moveMarker(String aSDW) throws InputMismatchException, IOException {            //Flyttar X åt något håller beroende på vad användaren anger.
+    public void moveMarker(String aSDW) throws InputMismatchException, IOException {            //Flyttar hunter åt något håller beroende på vad användaren anger.
         String asdw = aSDW.toLowerCase();
         Scanner scan = new Scanner(this.locationOfMarkerX());
         int locX = scan.nextInt();
@@ -86,7 +86,7 @@ public class GameBoard {
         this.gameBoard[indexx][indexy] = target;
     }
 
-    public String locationOfTarget() {                                  //Hittar IT i arrayen
+    public String locationOfTarget() {                                  //Hittar target i arrayen
         StringBuilder result = new StringBuilder(" ");
         for (int i = 0; i < this.gameBoard.length; i++) {
             for (int j = 0; j < this.gameBoard[i].length; j++) {
@@ -104,7 +104,7 @@ public class GameBoard {
         return targetLocation;
     }
 
-    public void moveTarget() throws InputMismatchException {            //Flyttar IT slumpmässigt
+    public void moveTarget() throws InputMismatchException {            //Flyttar target slumpmässigt
         boolean tryAgain = true;
         Scanner scan = new Scanner(this.locationOfTarget());
         int locX = scan.nextInt();
@@ -113,19 +113,19 @@ public class GameBoard {
             double directionCounter = Math.random();
             try {
                 if (directionCounter < 0.20) {
-                    this.gameBoard[locX + 1][locY] = targetMark;
+                    this.gameBoard[locX + 1][locY] = targetMark; //höger
                     this.gameBoard[locX][locY] = "[  ]";
                 } else if (directionCounter < 0.40) {
-                    this.gameBoard[locX][locY + 1] = targetMark;
+                    this.gameBoard[locX][locY + 1] = targetMark; //upp
                     this.gameBoard[locX][locY] = "[  ]";
                 } else if (directionCounter < 0.60) {
-                    this.gameBoard[locX - 1][locY] = targetMark;
+                    this.gameBoard[locX - 1][locY] = targetMark; //vänster
                     this.gameBoard[locX][locY] = "[  ]";
                 } else if (directionCounter < 0.80) {
-                    this.gameBoard[locX][locY - 1] = targetMark;
+                    this.gameBoard[locX][locY - 1] = targetMark; //ner
                     this.gameBoard[locX][locY] = "[  ]";
                 } else {
-                    this.gameBoard[locX][locY] = targetMark;
+                    this.gameBoard[locX][locY] = targetMark; //flyttar sig inte
                 }
                 tryAgain = false;
             } catch (ArrayIndexOutOfBoundsException e) {

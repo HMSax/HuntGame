@@ -26,7 +26,7 @@ public class GameMessage {
 
 
     public void howTo() {
-        String howTo = "Write A,S,D or W (and press enter) to move left(A),right(D),up(W) or down(S).";
+        String howTo = "Write A,S,D or W to move left(A),right(D),up(W) or down(S).";
         printIt(howTo);
     }
 
@@ -51,7 +51,7 @@ public class GameMessage {
     }
 
     public void playAgain() {
-        String playAgain = "Play again? (Y/N) +enter";
+        String playAgain = "Play again? (Y/N)";
         printIt(playAgain);
     }
     public void goodbye() {
