@@ -8,6 +8,7 @@ import GUI.GameView;
 import javax.swing.*;
 import java.io.IOException;
 
+
 public class GameModel {
     private GameBoard gameBoard;
     private GridComponent hunter;
@@ -15,6 +16,11 @@ public class GameModel {
     private GameMessage message;
     private GameView gameView;
 
+    private JLabel winLabel = new JLabel();
+    private JLabel lossLabel = new JLabel();
+
+    private int wins = 0;
+    private int losses = 0;
     public GameModel(){
         initializeGame();
     }
@@ -45,10 +51,21 @@ public class GameModel {
     }
 
     public boolean checkWin(){
-        return gameBoard.locationOfMarkerX().equals(gameBoard.getTargetLocation());
+        if (gameBoard.locationOfMarkerX().equals(gameBoard.getTargetLocation())) {
+            wins++;
+            return true;
+        }else{
+            return false;
+        }
     }
     public boolean checkLose(){
-        return gameBoard.locationOfTarget().equals(gameBoard.getMarkerLocation());
+        if (gameBoard.locationOfTarget().equals(gameBoard.getMarkerLocation())){
+            losses++;
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
     public String[][] getGameBoard(){
@@ -61,5 +78,21 @@ public class GameModel {
 
     public GridComponent getTarget() {
         return target;
+    }
+
+    public JLabel getWinLabel() {
+        return winLabel;
+    }
+
+    public JLabel getLossLabel() {
+        return lossLabel;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public int getLosses() {
+        return losses;
     }
 }

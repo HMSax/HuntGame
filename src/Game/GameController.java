@@ -27,6 +27,8 @@
             view.addKeyListener(new KeyController());
         }
 
+
+
         private class KeyController extends KeyAdapter {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -41,6 +43,7 @@
                             model.moveHunter(Character.toString(keyChar));
                             if (model.checkWin()){
                                 message.winner();
+                                view.updateView(model.getGameBoard());
                                 int option = JOptionPane.showConfirmDialog(null,
                                         "Congratulations, you won!\nDo you want to play again?",
                                         "GAME OVER",
@@ -54,6 +57,7 @@
                                 view.updateView(model.getGameBoard());
                             } if (model.checkLose()) {
                                 message.loser();
+                                view.updateView(model.getGameBoard());
                                 int option = JOptionPane.showConfirmDialog(null, "Sorry, you lost!\nDo you want to play again?",
                                         "GAME OVER",
                                         JOptionPane.YES_NO_OPTION);

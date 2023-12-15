@@ -52,7 +52,7 @@ public class MainFrame {
             GameModel model = new GameModel();
             GameView gameView = new GameView(this, model);
             GameController controller = new GameController(model, gameView, this);
-            frame.setSize(615, 660);
+            frame.setSize(615, 685);
             frame.setLocationRelativeTo(null);
             frame.getContentPane().add(gameView);
             frame.revalidate();
