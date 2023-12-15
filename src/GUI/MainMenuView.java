@@ -111,7 +111,6 @@ public class MainMenuView extends JPanel {
         setSize(615, 400);
         setVisible(true);
 
-
     }
     public void setNewGameButtonAction(ActionListener actionListener) {
         newGameButton.addActionListener(actionListener);
