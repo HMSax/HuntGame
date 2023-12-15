@@ -19,13 +19,19 @@ public class HuntGame extends JFrame {
 //    private final ImageIcon hunterIcon = new ImageIcon("src/IconImages/HunterIconImage.png");
     private final ImageIcon backgroundImage = new ImageIcon("src/IconImages/map2.jpg");
     private final JPanel gamePanel;
+    private JPanel topPanel;
     private final JLabel backgroundLabel;
     private JLabel messageLabel;
+    private JLabel winLabel;
+    private JLabel lossLabel;
     private GameBoard gameBoard;
     private GameMessage message;
     private GridComponent hunter;
     private GridComponent target;
     private char lastPressedKey;
+    private int wins = 0;
+    private int losses = 0;
+
 
 
 
@@ -33,7 +39,7 @@ public class HuntGame extends JFrame {
 
     public HuntGame() throws IOException, InterruptedException {
         setTitle("Game.HuntGame");
-        setSize(615, 660);
+        setSize(615, 685);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -46,10 +52,20 @@ public class HuntGame extends JFrame {
         backgroundLabel.setLayout(new GridLayout(10, 10));
         gamePanel.add(backgroundLabel);
 
+        topPanel = new JPanel(new BorderLayout());
+
+        JPanel scorePanel = new JPanel(new FlowLayout());
+        winLabel = new JLabel("Wins: 0");
+        lossLabel = new JLabel("Losses: 0");
+        scorePanel.add(winLabel);
+        scorePanel.add(lossLabel);
+
         message = new GameMessage();
         messageLabel = message.getCurrentMessage();
+        topPanel.add(scorePanel, BorderLayout.NORTH);
+        topPanel.add(messageLabel, BorderLayout.CENTER);
 
-        add(messageLabel,BorderLayout.NORTH);
+        add(topPanel, BorderLayout.NORTH);
         add(gamePanel, BorderLayout.CENTER);
 
         addKeyListener(new KeyAdapter() {
@@ -167,6 +183,8 @@ public class HuntGame extends JFrame {
     public boolean checkIfWin(){
         if (gameBoard.locationOfMarkerX().equals(gameBoard.getTargetLocation())) {
             message.winner();
+            wins++;
+            updateWinLossLabels();
             return true;
         }
         return false;
@@ -175,6 +193,8 @@ public class HuntGame extends JFrame {
     public boolean checkIfLose(){
         if (gameBoard.locationOfTarget().equals(gameBoard.getMarkerLocation())){
             message.loser();
+            losses++;
+            updateWinLossLabels();
             return true;
         }
         return false;
@@ -212,7 +232,10 @@ public class HuntGame extends JFrame {
     public char getLastPressedKey() {
         return lastPressedKey;
     }
-
+    private void updateWinLossLabels() {
+        winLabel.setText("Wins: " + wins);
+        lossLabel.setText("Losses: " + losses);
+    }
     public static void main(String[] args) throws IOException, InterruptedException {
         HuntGame game = new HuntGame();
     }
