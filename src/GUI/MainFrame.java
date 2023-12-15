@@ -28,7 +28,7 @@ public class MainFrame {
             clear();
 
             MainMenuView mainMenuView = new MainMenuView(this);
-            frame.setSize(300,320);
+            frame.setSize(615,685);
             frame.setLocationRelativeTo(null);
             frame.getContentPane().add(mainMenuView);
             frame.revalidate();

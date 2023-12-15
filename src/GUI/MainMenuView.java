@@ -10,22 +10,23 @@ public class MainMenuView extends JPanel {
     private JPanel cardPanel = new JPanel(new CardLayout());
 
     // Main menu panel
+    private ImageIcon HGbanner = new ImageIcon("src/IconImages/HGBanner.png");
     private JPanel menuPanel = new JPanel();
     private JButton newGameButton = new JButton("New Game");
     private JButton controlsButton = new JButton("Controls");
-    private JButton creatorsButton = new JButton("Creators");
-    private JButton instructionButton = new JButton("Game Instructions");
+    private JButton aboutButton = new JButton("About");
+    //private JButton instructionButton = new JButton("Game Instructions");
     private JButton quitButton = new JButton("QUIT");
 
     // Creator panel.
-    private JPanel creatorPanel = new JPanel();
-    private JTextArea creatorText = new JTextArea("TExt:\n Text: \n Text: \n Text:");
-    private JButton creatorBackButton = new JButton("Go Back");
+    private JPanel aboutPanel = new JPanel();
+    private JTextArea aboutText = new JTextArea("TExt:\n Text: \n Text: \n Text:");
+    private JButton aboutBackButton = new JButton("Go Back");
 
     // Instruction panel.
-    private JPanel instructionsPanel = new JPanel();
-    private JTextArea instructionsText = new JTextArea("TExt:\n Text: \n Text: \n Text:");
-    private JButton instructionsBackButton = new JButton("Go Back");
+    //private JPanel instructionsPanel = new JPanel();
+    //private JTextArea instructionsText = new JTextArea("TExt:\n Text: \n Text: \n Text:");
+    //private JButton instructionsBackButton = new JButton("Go Back");
 
     // Controls panel
     private JPanel controlsPanel = new JPanel();
@@ -42,35 +43,35 @@ public class MainMenuView extends JPanel {
         ActionListener instructionsListener = ae -> showInstructionsPanel();
         ActionListener creatorsListener = ae -> showCreatorPanel();
         ActionListener goBackListener = ae -> showMenuPanel();
-        ActionListener conrolListener = ae -> showControlPanel();
+        ActionListener controlListener = ae -> showControlPanel();
         ActionListener newGameListener = ae -> startNewGame();
 
         // Menu panel
         menuPanel.setLayout(new GridLayout(0,1));
         menuPanel.add(newGameButton);
         menuPanel.add(controlsButton);
-        menuPanel.add(creatorsButton);
-        menuPanel.add(instructionButton);
+        menuPanel.add(aboutButton);
+        //menuPanel.add(instructionButton);
         menuPanel.add(quitButton);
 
         // button size
         newGameButton.setPreferredSize(new Dimension(200, 50));
         controlsButton.setPreferredSize(new Dimension(200, 50));
-        creatorsButton.setPreferredSize(new Dimension(200, 50));
-        instructionButton.setPreferredSize(new Dimension(200, 50));
+        aboutButton.setPreferredSize(new Dimension(200, 50));
+        //instructionButton.setPreferredSize(new Dimension(200, 50));
         quitButton.setPreferredSize(new Dimension(200, 50));
 
         // run newGame
 
         // Instructions panel
-        instructionsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        instructionsPanel.add(instructionsText);
-        instructionsPanel.add(instructionsBackButton);
+        //instructionsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        //instructionsPanel.add(instructionsText);
+        //instructionsPanel.add(instructionsBackButton);
 
-        // Creator ponel
-        creatorPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        creatorPanel.add(creatorText);
-        creatorPanel.add(creatorBackButton);
+        // Creator panel
+        aboutPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        aboutPanel.add(aboutText);
+        aboutPanel.add(aboutBackButton);
 
         // controls panel
         controlsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -80,26 +81,26 @@ public class MainMenuView extends JPanel {
 
         // Add panels to cardPanel
         cardPanel.add(menuPanel, "menu");
-        cardPanel.add(instructionsPanel, "instructions");
-        cardPanel.add(creatorPanel, "creators");
+        //cardPanel.add(instructionsPanel, "instructions");
+        cardPanel.add(aboutPanel, "About");
         cardPanel.add(controlsPanel, "controls");
 
         // add ActionListeners to buttons
         quitButton.addActionListener(exitListener);
-        instructionButton.addActionListener(instructionsListener);
-        creatorsButton.addActionListener(creatorsListener);
-        controlsButton.addActionListener(conrolListener);
+        //instructionButton.addActionListener(instructionsListener);
+        aboutButton.addActionListener(creatorsListener);
+        controlsButton.addActionListener(controlListener);
         newGameButton.addActionListener(newGameListener);
 
         // Go back buttons
-        instructionsBackButton.addActionListener(goBackListener);
-        creatorBackButton.addActionListener(goBackListener);
+        //instructionsBackButton.addActionListener(goBackListener);
+        aboutBackButton.addActionListener(goBackListener);
         controlsBackButton.addActionListener(goBackListener);
 
         showMenuPanel();
         add(cardPanel);
 
-        setSize(300, 320);
+        setSize(615, 685);
         setVisible(true);
 
 
