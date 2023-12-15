@@ -3,7 +3,9 @@ package Game;
 import Factory.GridComponent;
 import Factory.GridComponentFactory;
 import Factory.GridComponentTypes;
+import GUI.GameView;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class GameModel {
@@ -11,20 +13,29 @@ public class GameModel {
     private GridComponent hunter;
     private GridComponent target;
     private GameMessage message;
-
-
+    private GameView gameView;
 
     public GameModel(){
         initializeGame();
+    }
+    public void setGameView(GameView gameView) {
+        this.gameView = gameView;
     }
     private void initializeGame() {
         GridComponentFactory gridComponentFactory = new GridComponentFactory();
         hunter = gridComponentFactory.createGridComponent(GridComponentTypes.HUNTER);
         target = gridComponentFactory.createGridComponent(GridComponentTypes.TARGET);
-        gameBoard = new GameBoard(hunter.getCharMark(), target.getCharMark(), message);
+        message = new GameMessage(new JLabel());
+        message.welcome();
+        gameBoard = new GameBoard(hunter.getCharMark(), target.getCharMark(), message, this.gameView);
         gameBoard.setMarkerX(4, 0, hunter.getCharMark());
         gameBoard.setTargetIT(4, 9, target.getCharMark());
     }
+
+    public GameMessage getMessage() {
+        return gameBoard.getMessage();
+    }
+
     public void moveHunter(String direction) throws IOException {
         gameBoard.moveMarker(direction);
     }
@@ -51,34 +62,4 @@ public class GameModel {
     public GridComponent getTarget() {
         return target;
     }
-    /*
-    private void handleKeyPress(char keyChar) {
-        switch (Character.toLowerCase(keyChar)) {
-            case 'w':
-            case 'a':
-            case 's':
-            case 'd':
-                try {
-                    gameBoard.moveMarker(Character.toString(keyChar));
-                    paintGrid();
-                    if (checkIfWin()){
-                        JOptionPane.showMessageDialog(null, "You win!");
-                    } else {
-                        gameBoard.moveTarget();
-                        paintGrid();
-                        if (checkIfLose()){
-                            JOptionPane.showMessageDialog(null, "You lose!");
-                        }
-                    }
-                    paintGrid();
-                    lastPressedKey = keyChar;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                break;
-            default: message.tryAgain();
-        }
-    }
-
-     */
 }

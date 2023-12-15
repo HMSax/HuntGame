@@ -7,31 +7,29 @@ import Game.GameModel;
 import javax.swing.*;
 import java.awt.*;
 
-public class GameView extends JFrame {
+public class GameView extends JPanel {
     private final ImageIcon backgroundImage = new ImageIcon("src/IconImages/map2.jpg");
-    private final CardLayout cardLayout = new CardLayout();
-    private final JPanel cardPanel = new JPanel(cardLayout);
     private JPanel gamePanel;
     private JLabel backgroundLabel;
     private JLabel messageLabel;
-    private GameMessage message = new GameMessage();
-    private GameModel model;
+
+    private final GameModel model;
+    private final GameMessage message = new GameMessage(new JLabel());
     private GridComponent hunter;
     private GridComponent target;
+    private MainFrame mainFrame;
 
 
-
-    public GameView (GameModel model){
+    public GameView (MainFrame mainFrame, GameModel model){
+        this.mainFrame = mainFrame;
         this.model = model;
+        this.message.welcome();
         this.hunter = model.getHunter();
         this.target = model.getTarget();
-        setTitle("HuntGame");
+        model.setGameView(this);
         setSize(615, 660);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         setLayout(new BorderLayout());
-        setResizable(false);
         this.setFocusable(true);
 
         gamePanel = new JPanel();
@@ -41,11 +39,12 @@ public class GameView extends JFrame {
         gamePanel.add(backgroundLabel);
         messageLabel = message.getCurrentMessage();
         add(messageLabel,BorderLayout.NORTH);
-        message.welcome();
         add(gamePanel, BorderLayout.CENTER);
+
     }
     public void updateView(String[][] gameBoard) {
         backgroundLabel.removeAll();
+        backgroundLabel.setLayout(new GridLayout(10, 10));
         String onIndex;
 
         for (int i = 0; i < gameBoard.length; i++) {
@@ -67,20 +66,9 @@ public class GameView extends JFrame {
                 backgroundLabel.add(button);
             }
         }
-        messageLabel.setText(message.getCurrentMessage().getText());
-        backgroundLabel.revalidate();
-        backgroundLabel.repaint();
+        messageLabel.setText(model.getMessage().getCurrentMessage().getText());
+        mainFrame.update();
+        this.revalidate();
+        this.repaint();
     }
-
-    /*private void paintGrid() {
-        backgroundLabel.removeAll();
-        String[][] board = gameBoard.getGameBoard();
-        String onIndex;
-
-        backgroundLabel.revalidate();
-        backgroundLabel.repaint();
-    }
-
-     */
-
 }
