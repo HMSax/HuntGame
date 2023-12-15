@@ -6,9 +6,9 @@ Vi har valt att skapa ett turordningsbaserat singleplayer-spel där spelaren fö
 spelplan. Om spelaren fångar målet så har spelaren vunnit. Om målet, som rör sig slumpmässigt åt något håll på 
 spelplanen varje spelrunda, fångar spelaren så har spelaren förlorat.
 
-Denna uppgift som gjordes i grupp, under ca två veckor, för att ge gruppen erfarenhet av att arbeta med ett tydligt 
+Denna uppgift gjordes i grupp, under ca två veckor, för att ge gruppen erfarenhet av att arbeta med ett tydligt 
 produktmål och kravspecifikation uppdelad i innehåll och funktionalitet med varierande prioritet. Vi har även skapat 
-UCD och klassdiagram, där vi tagit beslut om vilka designmönster vi ska tillämpa, och arbetat ifrån dessa.
+UCD och klassdiagram, där vi tagit beslut om vilka designmönster vi ska tillämpa, och arbetat utifrån dessa.
 
 
 # Medverkande
