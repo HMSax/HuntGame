@@ -25,10 +25,6 @@ public class HuntGame extends JFrame {
     private GridComponent target;
     private char lastPressedKey;
 
-
-
-    //private JButton[][] buttonBoard;
-
     public HuntGame() throws IOException, InterruptedException {
         setTitle("Game.HuntGame");
         setSize(615, 660);
@@ -197,8 +193,6 @@ public class HuntGame extends JFrame {
                 button.setBorderPainted(true);
                 button.setFocusPainted(false);
                 button.setContentAreaFilled(true);
-                //button.setBackground(Color.WHITE);
-                //button.setForeground(Color.BLACK);
                 button.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
                 backgroundLabel.add(button);
             }
