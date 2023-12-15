@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class MainMenu extends JFrame {
+public class MainMenuView extends JPanel {
 
     // CardLayout
     private JPanel cardPanel = new JPanel(new CardLayout());
@@ -31,18 +31,22 @@ public class MainMenu extends JFrame {
     private JPanel controlsPanel = new JPanel();
     private JTextArea controlsText = new JTextArea("TExt:\n Text: \n Text: \n Text:");
     private JButton controlsBackButton = new JButton("Go Back");
+    private final MainFrame mainFrame;
+    private GameView gameView;
 
 
-    public MainMenu() {
+    public MainMenuView(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
         // ActionListeners
         ActionListener exitListener = ae -> System.exit(0);
         ActionListener instructionsListener = ae -> showInstructionsPanel();
         ActionListener creatorsListener = ae -> showCreatorPanel();
         ActionListener goBackListener = ae -> showMenuPanel();
         ActionListener conrolListener = ae -> showControlPanel();
+        ActionListener newGameListener = ae -> startNewGame();
 
         // Menu panel
-        menuPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        menuPanel.setLayout(new GridLayout(0,1));
         menuPanel.add(newGameButton);
         menuPanel.add(controlsButton);
         menuPanel.add(creatorsButton);
@@ -85,32 +89,29 @@ public class MainMenu extends JFrame {
         instructionButton.addActionListener(instructionsListener);
         creatorsButton.addActionListener(creatorsListener);
         controlsButton.addActionListener(conrolListener);
+        newGameButton.addActionListener(newGameListener);
 
         // Go back buttons
         instructionsBackButton.addActionListener(goBackListener);
         creatorBackButton.addActionListener(goBackListener);
         controlsBackButton.addActionListener(goBackListener);
 
-        //
         showMenuPanel();
         add(cardPanel);
 
-        //
-        setTitle("HuntGame");
         setSize(300, 320);
         setVisible(true);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+
     }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            MainMenu m = new MainMenu();
-        });
+    public void setNewGameButtonAction(ActionListener actionListener) {
+        newGameButton.addActionListener(actionListener);
     }
-
-
     // CardLayout methods
+
+    public void startNewGame(){
+        mainFrame.showGameView();
+    }
     private void showInstructionsPanel() {
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
         cardLayout.show(cardPanel, "instructions");

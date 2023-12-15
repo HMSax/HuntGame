@@ -1,19 +1,16 @@
 package Game;
 
 import javax.swing.*;
-import java.awt.desktop.ScreenSleepEvent;
-import java.util.concurrent.TimeUnit;
 
 public class GameMessage {
-    private JLabel currentMessage = new JLabel("");
-
-    public GameMessage(){}
+    private final JLabel currentMessage;
+    public GameMessage(JLabel label){
+        this.currentMessage = label;
+    }
     public JLabel getCurrentMessage() {
         return currentMessage;
     }
-
     private void printIt(String message) {
-        System.out.println(message);
         currentMessage.setText(message);
         currentMessage.revalidate();
         currentMessage.repaint();
@@ -23,8 +20,6 @@ public class GameMessage {
         printIt(welcome);
 
     }
-
-
     public void howTo() {
         String howTo = "Write A,S,D or W to move left(A),right(D),up(W) or down(S).";
         printIt(howTo);

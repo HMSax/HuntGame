@@ -1,6 +1,7 @@
 package Game;
 
-import java.io.IOException;
+import GUI.GameView;
+
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -9,7 +10,7 @@ public class GameBoard {
     private final String hunterMark;
     private final String targetMark;
     private final GameMessage message;
-
+    private final GameView gameView;
     private String[][] gameBoard = {                                                             //Spelplanen
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
             {"[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]", "[  ]"},
@@ -26,11 +27,15 @@ public class GameBoard {
     private String markerLocation = "  9 0";
 
     //constructor för spelplanen
-    public GameBoard(String hunterMark, String targetMark, GameMessage message) {
-        this.gameBoard = gameBoard;
+    public GameBoard(String hunterMark, String targetMark, GameMessage message, GameView gameView) {
         this.hunterMark = hunterMark;
         this.targetMark = targetMark;
         this.message = message;
+        this.gameView = gameView;
+    }
+
+    public GameMessage getMessage() {
+        return message;
     }
 
     public String[][] getGameBoard() {
@@ -60,7 +65,7 @@ public class GameBoard {
     }
 
 
-    public void moveMarker(String aSDW) throws InputMismatchException, IOException {            //Flyttar hunter åt något håller beroende på vad användaren anger.
+    public void moveMarker(String aSDW) throws InputMismatchException {            //Flyttar X åt något håller beroende på vad användaren anger.
         String asdw = aSDW.toLowerCase();
         Scanner scan = new Scanner(this.locationOfMarkerX());
         int locX = scan.nextInt();
@@ -71,14 +76,16 @@ public class GameBoard {
                 case "d" -> this.gameBoard[locX][locY + 1] = hunterMark;
                 case "w" -> this.gameBoard[locX - 1][locY] = hunterMark;
                 default -> this.gameBoard[locX][locY - 1] = hunterMark;
+
             }
         } catch (ArrayIndexOutOfBoundsException | NoSuchElementException e) {
             message.moveOutsideBoard();
-
             return;
         }
+        message.howTo();
         this.markerLocation = this.locationOfMarkerX();
         this.gameBoard[locX][locY] = "[  ]";
+
     }
 
 

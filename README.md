@@ -1,4 +1,4 @@
-# Game.HuntGame
+# Game.GameModel
 
 Ett grupprojekt i kursen "Designmönster, analys och design" på Nackademin. 
 
