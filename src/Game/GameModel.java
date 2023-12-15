@@ -21,7 +21,7 @@ public class GameModel {
     public void setGameView(GameView gameView) {
         this.gameView = gameView;
     }
-    private void initializeGame() {
+    public void initializeGame() {
         GridComponentFactory gridComponentFactory = new GridComponentFactory();
         hunter = gridComponentFactory.createGridComponent(GridComponentTypes.HUNTER);
         target = gridComponentFactory.createGridComponent(GridComponentTypes.TARGET);
