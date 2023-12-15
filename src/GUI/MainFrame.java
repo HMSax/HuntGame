@@ -1,8 +1,5 @@
 package GUI;
 
-import Game.GameController;
-import Game.GameModel;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -17,22 +14,15 @@ public class MainFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setLayout(new BorderLayout());
-        //frame.setResizable(false);
         frame.setFocusable(true);
         showMainMenu();
     }
 
     private void clear() {
-        frame.getContentPane().removeAll(); // Remove all components
-        frame.repaint();  // Repaint the frame
-        frame.revalidate(); // Revalidate the frame layout
-    }
-
-    public void update() {
+        frame.getContentPane().removeAll();
         frame.repaint();
         frame.revalidate();
     }
-
     public void showMainMenu(){
         SwingUtilities.invokeLater(() -> {
             clear();
@@ -48,10 +38,8 @@ public class MainFrame {
 
     public void showGameView(){
         SwingUtilities.invokeLater(() -> {
-            clear();
-            GameModel model = new GameModel();
-            GameView gameView = new GameView(this, model);
-            GameController controller = new GameController(model, gameView, this);
+            clear();;
+            GameView gameView = new GameView(this);
             frame.setSize(615, 685);
             frame.setLocationRelativeTo(null);
             frame.getContentPane().add(gameView);
