@@ -11,7 +11,9 @@ public class MainMenuView extends JPanel {
 
     // Main menu panel
     private ImageIcon HGbanner = new ImageIcon("src/IconImages/HGBanner.png");
+    private JLabel bannerLabel  = new JLabel();
     private JPanel menuPanel = new JPanel();
+    private JPanel buttonPanel = new JPanel();
     private JButton newGameButton = new JButton("New Game");
     private JButton controlsButton = new JButton("Controls");
     private JButton aboutButton = new JButton("About");
@@ -40,19 +42,25 @@ public class MainMenuView extends JPanel {
         this.mainFrame = mainFrame;
         // ActionListeners
         ActionListener exitListener = ae -> System.exit(0);
-        ActionListener instructionsListener = ae -> showInstructionsPanel();
-        ActionListener creatorsListener = ae -> showCreatorPanel();
+       // ActionListener instructionsListener = ae -> showInstructionsPanel();
+        ActionListener aboutListener = ae -> showAboutPanel();
         ActionListener goBackListener = ae -> showMenuPanel();
         ActionListener controlListener = ae -> showControlPanel();
         ActionListener newGameListener = ae -> startNewGame();
 
         // Menu panel
         menuPanel.setLayout(new GridLayout(0,1));
-        menuPanel.add(newGameButton);
-        menuPanel.add(controlsButton);
-        menuPanel.add(aboutButton);
+        buttonPanel.setLayout(new GridLayout(2,2));
+
+        bannerLabel.setIcon(HGbanner);
+
+        menuPanel.add(bannerLabel);
+        buttonPanel.add(newGameButton);
+        buttonPanel.add(controlsButton);
+        buttonPanel.add(aboutButton);
         //menuPanel.add(instructionButton);
-        menuPanel.add(quitButton);
+        buttonPanel.add(quitButton);
+        menuPanel.add(buttonPanel);
 
         // button size
         newGameButton.setPreferredSize(new Dimension(200, 50));
@@ -68,7 +76,7 @@ public class MainMenuView extends JPanel {
         //instructionsPanel.add(instructionsText);
         //instructionsPanel.add(instructionsBackButton);
 
-        // Creator panel
+        // Aboutpanel
         aboutPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         aboutPanel.add(aboutText);
         aboutPanel.add(aboutBackButton);
@@ -88,7 +96,7 @@ public class MainMenuView extends JPanel {
         // add ActionListeners to buttons
         quitButton.addActionListener(exitListener);
         //instructionButton.addActionListener(instructionsListener);
-        aboutButton.addActionListener(creatorsListener);
+        aboutButton.addActionListener(aboutListener);
         controlsButton.addActionListener(controlListener);
         newGameButton.addActionListener(newGameListener);
 
@@ -100,7 +108,7 @@ public class MainMenuView extends JPanel {
         showMenuPanel();
         add(cardPanel);
 
-        setSize(615, 685);
+        setSize(615, 400);
         setVisible(true);
 
 
@@ -122,9 +130,9 @@ public class MainMenuView extends JPanel {
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
         cardLayout.show(cardPanel, "menu");
     }
-    private void showCreatorPanel() {
+    private void showAboutPanel() {
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-        cardLayout.show(cardPanel, "creators");
+        cardLayout.show(cardPanel, "About");
     }
     private void showControlPanel() {
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
