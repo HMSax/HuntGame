@@ -53,6 +53,10 @@ public class MainMenuView extends JPanel {
         buttonPanel.setLayout(new GridLayout(2,2));
 
         bannerLabel.setIcon(HGbanner);
+        newGameButton.setBackground(Color.white);
+        controlsButton.setBackground(Color.white);
+        aboutButton.setBackground(Color.white);
+        quitButton.setBackground(Color.white);
 
         menuPanel.add(bannerLabel);
         buttonPanel.add(newGameButton);
@@ -78,11 +82,13 @@ public class MainMenuView extends JPanel {
 
         // Aboutpanel
         aboutPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        aboutBackButton.setBackground(Color.white);
         aboutPanel.add(aboutText);
         aboutPanel.add(aboutBackButton);
 
         // controls panel
         controlsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        controlsBackButton.setBackground(Color.white);
         controlsPanel.add(controlsText);
         controlsPanel.add(controlsBackButton);
 
