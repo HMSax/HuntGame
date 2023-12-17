@@ -61,7 +61,7 @@ public class GameBoard {
     }
 
 
-    public void moveMarker(String aSDW) throws InputMismatchException {            //Flyttar X åt något håller beroende på vad användaren anger.
+    public void moveMarker(String aSDW) throws InputMismatchException {            //Flyttar hunter åt något håller beroende på vad användaren anger.
         String asdw = aSDW.toLowerCase();
         Scanner scan = new Scanner(this.locationOfMarkerX());
         int locX = scan.nextInt();
