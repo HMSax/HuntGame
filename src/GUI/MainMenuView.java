@@ -11,7 +11,7 @@ public class MainMenuView extends JPanel {
 
     // Main menu panel
     private ImageIcon HGbanner = new ImageIcon("src/IconImages/HGBanner.png");
-    private JLabel bannerLabel  = new JLabel();
+    private JLabel bannerLabel = new JLabel();
     private JPanel menuPanel = new JPanel();
     private JPanel buttonPanel = new JPanel();
     private JButton newGameButton = new JButton("New Game");
@@ -42,21 +42,25 @@ public class MainMenuView extends JPanel {
         this.mainFrame = mainFrame;
         // ActionListeners
         ActionListener exitListener = ae -> System.exit(0);
-       // ActionListener instructionsListener = ae -> showInstructionsPanel();
+        // ActionListener instructionsListener = ae -> showInstructionsPanel();
         ActionListener aboutListener = ae -> showAboutPanel();
         ActionListener goBackListener = ae -> showMenuPanel();
         ActionListener controlListener = ae -> showControlPanel();
         ActionListener newGameListener = ae -> startNewGame();
 
+
         // Menu panel
-        menuPanel.setLayout(new GridLayout(0,1));
-        buttonPanel.setLayout(new GridLayout(2,2));
+        menuPanel.setLayout(new GridLayout(0, 1));
+        buttonPanel.setLayout(new GridLayout(2, 2));
 
         bannerLabel.setIcon(HGbanner);
-        newGameButton.setBackground(Color.white);
-        controlsButton.setBackground(Color.white);
-        aboutButton.setBackground(Color.white);
-        quitButton.setBackground(Color.white);
+
+        // button design
+        newGameButton = mainFrame.buttonDesigner(newGameButton);
+        controlsButton = mainFrame.buttonDesigner(controlsButton);
+        aboutButton = mainFrame.buttonDesigner(aboutButton);
+        //instructionButton.setPreferredSize(new Dimension(200, 50));
+        quitButton = mainFrame.buttonDesigner(quitButton);
 
         menuPanel.add(bannerLabel);
         buttonPanel.add(newGameButton);
@@ -65,13 +69,6 @@ public class MainMenuView extends JPanel {
         //menuPanel.add(instructionButton);
         buttonPanel.add(quitButton);
         menuPanel.add(buttonPanel);
-
-        // button size
-        newGameButton.setPreferredSize(new Dimension(200, 50));
-        controlsButton.setPreferredSize(new Dimension(200, 50));
-        aboutButton.setPreferredSize(new Dimension(200, 50));
-        //instructionButton.setPreferredSize(new Dimension(200, 50));
-        quitButton.setPreferredSize(new Dimension(200, 50));
 
         // run newGame
 
@@ -82,13 +79,15 @@ public class MainMenuView extends JPanel {
 
         // Aboutpanel
         aboutPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        aboutBackButton.setBackground(Color.white);
+        aboutPanel.setBackground(Color.BLACK);
+        aboutBackButton = mainFrame.buttonDesigner(aboutBackButton);
         aboutPanel.add(aboutText);
         aboutPanel.add(aboutBackButton);
 
         // controls panel
         controlsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        controlsBackButton.setBackground(Color.white);
+        controlsPanel.setBackground(Color.BLACK);
+        controlsBackButton = mainFrame.buttonDesigner(controlsBackButton);
         controlsPanel.add(controlsText);
         controlsPanel.add(controlsBackButton);
 
@@ -118,27 +117,30 @@ public class MainMenuView extends JPanel {
         setVisible(true);
 
     }
+
     public void setNewGameButtonAction(ActionListener actionListener) {
         newGameButton.addActionListener(actionListener);
     }
     // CardLayout methods
 
-    public void startNewGame(){
+    public void startNewGame() {
         mainFrame.showGameView();
     }
-    private void showInstructionsPanel() {
-        CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
-        cardLayout.show(cardPanel, "instructions");
-    }
+    // private void showInstructionsPanel() {
+    //    CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
+    //   cardLayout.show(cardPanel, "instructions");
+    //}
 
     private void showMenuPanel() {
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
         cardLayout.show(cardPanel, "menu");
     }
+
     private void showAboutPanel() {
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
         cardLayout.show(cardPanel, "About");
     }
+
     private void showControlPanel() {
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
         cardLayout.show(cardPanel, "controls");

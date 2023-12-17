@@ -48,4 +48,12 @@ public class MainFrame {
             gameView.requestFocus();
         });
     }
+
+    public JButton buttonDesigner(JButton button){
+        button.setPreferredSize(new Dimension(200, 50));
+        button.setBackground(Color.black);
+        button.setForeground(Color.white);
+        button.setFont(new Font("Chiller", Font.PLAIN, 42));
+        return button;
+    }
 }

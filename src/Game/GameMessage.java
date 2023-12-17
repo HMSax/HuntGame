@@ -21,7 +21,7 @@ public class GameMessage {
 
     }
     public void howTo() {
-        String howTo = "Write A,S,D or W to move left(A),right(D),up(W) or down(S).";
+        String howTo = "Press A,S,D or W to move left(A),right(D),up(W) or down(S).";
         printIt(howTo);
     }
 
@@ -31,7 +31,7 @@ public class GameMessage {
     }
 
     public void moveOutsideBoard() {
-        String moveOutside = "You are trying to move outside the board or didn't write A,S,D or W. Try again!";
+        String moveOutside = "You are trying to move outside the board or didn't press A,S,D or W. Try again!";
         printIt(moveOutside);
     }
 
