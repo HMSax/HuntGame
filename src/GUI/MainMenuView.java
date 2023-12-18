@@ -3,6 +3,10 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class MainMenuView extends JPanel {
 
@@ -12,7 +16,9 @@ public class MainMenuView extends JPanel {
     // Main menu panel
     private ImageIcon HGbanner = new ImageIcon("src/IconImages/HGBanner.png");
     private JLabel bannerLabel = new JLabel();
+    private JLabel bannerLabel2 = new JLabel();
     private JPanel menuPanel = new JPanel();
+    private JPanel bannerPanel = new JPanel();
     private JPanel buttonPanel = new JPanel();
     private JButton newGameButton = new JButton("New Game");
     private JButton controlsButton = new JButton("Controls");
@@ -43,7 +49,13 @@ public class MainMenuView extends JPanel {
         // ActionListeners
         ActionListener exitListener = ae -> System.exit(0);
         // ActionListener instructionsListener = ae -> showInstructionsPanel();
-        ActionListener aboutListener = ae -> showAboutPanel();
+        ActionListener aboutListener = ae -> {
+            try {
+                showAboutPanel();
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        };
         ActionListener goBackListener = ae -> showMenuPanel();
         ActionListener controlListener = ae -> showControlPanel();
         ActionListener newGameListener = ae -> startNewGame();
@@ -78,18 +90,30 @@ public class MainMenuView extends JPanel {
         //instructionsPanel.add(instructionsBackButton);
 
         // Aboutpanel
-        aboutPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        aboutPanel.setBackground(Color.BLACK);
+        aboutPanel.setLayout(new BorderLayout());
         aboutBackButton = mainFrame.buttonDesigner(aboutBackButton);
-        aboutPanel.add(aboutText);
-        aboutPanel.add(aboutBackButton);
+        aboutPanel.add(aboutText, BorderLayout.CENTER);
+        aboutPanel.add(aboutBackButton, BorderLayout.SOUTH);
+        aboutText.setBackground(Color.BLACK);
+        aboutText.setForeground(new Color(80,115, 30));
+        aboutText.setFont(new Font("Chiller", Font.BOLD, 25));
+        aboutText.setEditable(false);
 
         // controls panel
-        controlsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        bannerPanel.setLayout(new GridLayout(0,1));
+        bannerLabel2.setIcon(HGbanner);
+        bannerPanel.add(bannerLabel2);
+        controlsPanel.setLayout(new BorderLayout());
         controlsPanel.setBackground(Color.BLACK);
         controlsBackButton = mainFrame.buttonDesigner(controlsBackButton);
-        controlsPanel.add(controlsText);
-        controlsPanel.add(controlsBackButton);
+        controlsPanel.add(controlsText, BorderLayout.CENTER);
+        controlsPanel.add(controlsBackButton, BorderLayout.SOUTH);
+        controlsText.setBackground(Color.BLACK);
+        controlsText.setForeground(new Color(80,115, 30));
+        controlsText.setFont(new Font("Chiller", Font.BOLD, 25));
+        controlsText.setEditable(false);
+        controlsPanel.add(bannerPanel, BorderLayout.NORTH);
+
 
 
         // Add panels to cardPanel
@@ -136,14 +160,47 @@ public class MainMenuView extends JPanel {
         cardLayout.show(cardPanel, "menu");
     }
 
-    private void showAboutPanel() {
+    private void showAboutPanel() throws FileNotFoundException {
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
         cardLayout.show(cardPanel, "About");
-    }
 
+        try(BufferedReader reader = new BufferedReader(new FileReader("src/TextFiles/About.txt"))){
+            StringBuilder textFromFile = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                textFromFile.append(line).append("\n");
+            }
+
+            aboutText.setText(textFromFile.toString());
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
     private void showControlPanel() {
         CardLayout cardLayout = (CardLayout) cardPanel.getLayout();
         cardLayout.show(cardPanel, "controls");
+
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/TextFiles/Controls.txt"))) {
+            StringBuilder textFromFile = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                textFromFile.append(line).append("\n");
+            }
+
+            controlsText.setText(textFromFile.toString());
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+
+
+        }
     }
 
 }
