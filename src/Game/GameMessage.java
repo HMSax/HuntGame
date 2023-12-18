@@ -44,13 +44,4 @@ public class GameMessage {
         String loser = "The target caught YOU! Oh no!";
         printIt(loser);
     }
-
-    public void playAgain() {
-        String playAgain = "Play again? (Y/N)";
-        printIt(playAgain);
-    }
-    public void goodbye() {
-        String goodbye = "Goodbye!";
-        printIt(goodbye);
-    }
 }

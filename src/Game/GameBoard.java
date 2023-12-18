@@ -80,7 +80,6 @@ public class GameBoard {
         this.gameBoard[locX][locY] = "[  ]";
     }
 
-
     public void setTargetIT(int indexx, int indexy, String target) {    //Placerar IT i arrayen
         this.gameBoard[indexx][indexy] = target;
     }
@@ -133,18 +132,4 @@ public class GameBoard {
         }
         this.targetLocation = this.locationOfTarget();
     }
-
-    @Override
-    public String toString() {
-        String outString = "";
-        for (int i = 0; i < gameBoard.length; i++) {
-            for (int j = 0; j < gameBoard[i].length; j++) {
-                outString += " " + gameBoard[i][j];
-            }
-            outString += "\n";
-        }
-        return outString;
-    }
-
-
 }

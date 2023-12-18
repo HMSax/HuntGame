@@ -56,7 +56,6 @@
                 }
             };
 
-
             // Menu panel
             menuPanel.setLayout(new GridLayout(0, 1));
             buttonPanel.setLayout(new GridLayout(2, 2));
@@ -122,10 +121,6 @@
             setSize(615, 400);
             setVisible(true);
 
-        }
-
-        public void setNewGameButtonAction(ActionListener actionListener) {
-            newGameButton.addActionListener(actionListener);
         }
 
         // CardLayout methods
