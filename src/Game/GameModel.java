@@ -4,15 +4,12 @@ import Factory.GridComponent;
 import Factory.GridComponentFactory;
 import Factory.GridComponentTypes;
 
-import javax.swing.*;
 import java.io.IOException;
 
 public class GameModel {
     private GameBoard gameBoard;
     private GridComponent hunter;
     private GridComponent target;
-    private GameMessage message;
-
     private int wins = 0;
     private int losses = 0;
     public GameModel(){
@@ -22,9 +19,7 @@ public class GameModel {
         GridComponentFactory gridComponentFactory = new GridComponentFactory();
         hunter = gridComponentFactory.createGridComponent(GridComponentTypes.HUNTER);
         target = gridComponentFactory.createGridComponent(GridComponentTypes.TARGET);
-        message = new GameMessage(new JLabel());
-        message.welcome();
-        gameBoard = new GameBoard(hunter.getCharMark(), target.getCharMark(), message);
+        gameBoard = new GameBoard(hunter.getCharMark(), target.getCharMark());
         gameBoard.setMarkerX(4, 0, hunter.getCharMark());
         gameBoard.setTargetIT(4, 9, target.getCharMark());
     }

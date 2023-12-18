@@ -1,5 +1,6 @@
 package Game;
 
+import javax.swing.*;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -24,10 +25,11 @@ public class GameBoard {
     private String markerLocation = "  9 0";
 
     //constructor för spelplanen
-    public GameBoard(String hunterMark, String targetMark, GameMessage message) {
+    public GameBoard(String hunterMark, String targetMark) {
         this.hunterMark = hunterMark;
         this.targetMark = targetMark;
-        this.message = message;
+        message = new GameMessage(new JLabel());
+        message.welcome();
     }
 
     public GameMessage getMessage() {
@@ -75,7 +77,7 @@ public class GameBoard {
         } catch (ArrayIndexOutOfBoundsException | NoSuchElementException e) {
             throw new InputMismatchException("You are trying to move outside the board, or didn't write A,S,D or W. Try again!");
         }
-        message.howTo();
+        //message.howTo();
         this.markerLocation = this.locationOfMarkerX();
         this.gameBoard[locX][locY] = "[  ]";
     }
