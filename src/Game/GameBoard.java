@@ -29,6 +29,7 @@ public class GameBoard {
         this.hunterMark = hunterMark;
         this.targetMark = targetMark;
         message = new GameMessage(new JLabel());
+        message.welcome();
     }
 
     public GameMessage getMessage() {

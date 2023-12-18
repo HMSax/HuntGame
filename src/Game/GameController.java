@@ -16,7 +16,6 @@
             this.model = new GameModel();
             this.view = view;
             addActionListeners();
-            model.getMessage().welcome();
             view.updateView(this.model.getGameBoard(), this);
         }
         public GameModel getModel() {
