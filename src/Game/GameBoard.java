@@ -60,7 +60,6 @@ public class GameBoard {
         return result.toString();
     }
 
-
     public void moveMarker(String aSDW) throws InputMismatchException {            //Flyttar hunter åt något håller beroende på vad användaren anger.
         String asdw = aSDW.toLowerCase();
         Scanner scan = new Scanner(this.locationOfMarkerX());
@@ -72,7 +71,6 @@ public class GameBoard {
                 case "d" -> this.gameBoard[locX][locY + 1] = hunterMark;
                 case "w" -> this.gameBoard[locX - 1][locY] = hunterMark;
                 default -> this.gameBoard[locX][locY - 1] = hunterMark;
-
             }
         } catch (ArrayIndexOutOfBoundsException | NoSuchElementException e) {
             throw new InputMismatchException("You are trying to move outside the board, or didn't write A,S,D or W. Try again!");
@@ -80,7 +78,6 @@ public class GameBoard {
         message.howTo();
         this.markerLocation = this.locationOfMarkerX();
         this.gameBoard[locX][locY] = "[  ]";
-
     }
 
 

@@ -1,11 +1,9 @@
 package Factory;
 
 public class GridComponentFactory{
-    public GridComponent createGridComponent(GridComponentTypes type)
-    {
+    public GridComponent createGridComponent(GridComponentTypes type) {
         if (type == null)
             return null;
-
         switch (type) {
             case HUNTER:
                 return new Hunter();

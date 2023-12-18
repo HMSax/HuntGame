@@ -26,7 +26,6 @@ public class MainFrame {
     public void showMainMenu(){
         SwingUtilities.invokeLater(() -> {
             clear();
-
             MainMenuView mainMenuView = new MainMenuView(this);
             frame.setSize(615,442);
             frame.setLocationRelativeTo(null);

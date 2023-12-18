@@ -7,7 +7,6 @@ import Factory.GridComponentTypes;
 import javax.swing.*;
 import java.io.IOException;
 
-
 public class GameModel {
     private GameBoard gameBoard;
     private GridComponent hunter;
@@ -71,7 +70,6 @@ public class GameModel {
     public GridComponent getTarget() {
         return target;
     }
-
 
     public int getWins() {
         return wins;

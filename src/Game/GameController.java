@@ -23,7 +23,6 @@
             return model;
         }
 
-
         private void addActionListeners() {
             view.addKeyListener(new KeyController());
         }
@@ -31,7 +30,6 @@
         public JLabel getMessage(){
             return model.getMessage().getCurrentMessage();
         }
-
 
         private class KeyController extends KeyAdapter {
             @Override

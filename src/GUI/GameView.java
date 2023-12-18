@@ -20,15 +20,16 @@ public class GameView extends JPanel {
     public GameView (MainFrame mainFrame){
         this.controller = new GameController(this);
         this.mainFrame = mainFrame;
+
         setSize(615, 685);
         setVisible(true);
         setLayout(new BorderLayout());
         this.setFocusable(true);
+
         gamePanel = new JPanel();
         backgroundLabel.setIcon(backgroundImage);
         backgroundLabel.setLayout(new GridLayout(10, 10));
         gamePanel.add(backgroundLabel);
-
         topPanel = new JPanel(new BorderLayout());
 
         JPanel scorePanel = new JPanel(new FlowLayout());
@@ -44,6 +45,7 @@ public class GameView extends JPanel {
         backgroundLabel.removeAll();
         backgroundLabel.setLayout(new GridLayout(10, 10));
         String onIndex;
+
         for (int i = 0; i < gameBoard.length; i++) {
             for (int j = 0; j < gameBoard.length; j++) {
                 onIndex = gameBoard[i][j];
